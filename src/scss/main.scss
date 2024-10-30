@@ -1,0 +1,75 @@
+@use "fonts";
+@use "ToggleSwitch";
+
+:root {
+  /*Font size*/
+  --ft-num-size: 32px;
+
+  /* Theme 1 Colors */
+  //  Background
+  --clr-th1-main-bg: hsl(222, 26%, 31%);
+  --clr-th1-toggle-and-key-bg: hsl(223, 31%, 20%);
+  --clr-th1-scrn-bg: hsl(224, 36%, 15%);
+
+  //  Keys
+  --clr-th1-key-bg-ddb: hsl(225, 21%, 49%);
+  --clr-th1-key-sh-ddb: hsl(224, 28%, 35%);
+
+  --clr-th1-key-and-toggle-bg-r: hsl(6, 63%, 50%);
+  --clr-th1-key-bg-dr: hsl(6, 70%, 34%);
+
+  --clr-th1-key-bg-lgo: hsl(30, 25%, 89%);
+  --clr-th1-key-sh-go: hsl(28, 16%, 65%);
+
+  //  Text
+  --clr-th1-very-dark-grayish-blue: hsl(221, 14%, 31%);
+  --clr-white: hsl(0, 0%, 100%);
+
+  /* Theme 2 Colors */
+  //  Background
+  --clr-th2-main-bg-lg: hsl(0, 0%, 90%);
+  --clr-th2-toggle-and-key-bg-gr: hsl(0, 5%, 81%);
+  --clr-th2-scrn-bg-vlg: hsl(0, 0%, 93%);
+
+  //  Keys
+  --clr-th2-key-bg-dmc: hsl(185, 42%, 37%);
+  --clr-th2-key-sh-vdy: hsl(185, 58%, 25%);
+
+  --clr-th2-key-and-toggle-bg-o: hsl(25, 98%, 40%);
+  --clr-th2-key-sh-do: hsl(25, 99%, 27%);
+
+  --clr-th2-key-bg-lgy: hsl(45, 7%, 89%);
+  --clr-th2-key-sh-dgo: hsl(35, 11%, 61%);
+
+  //  Text
+  --clr-th2-very-dark-grayish-yellow: hsl(60, 10%, 19%);
+
+  /* Theme 3 Colors */
+  //  Background
+  --clr-th3-main-bg-vdv: hsl(268, 75%, 9%);
+  --clr-th3-toggle-and-key-and-scrn-bg-vdv: hsl(268, 71%, 12%);
+
+  //  Keys
+  --clr-th3-key-bg-dv: hsl(281, 89%, 26%);
+  --clr-th3-key-sh-vm: hsl(285, 91%, 52%);
+
+  --clr-th3-key-and-toggle-bg-pc: hsl(176, 100%, 44%);
+  --clr-th3-key-sh-sc: hsl(177, 92%, 70%);
+
+  --clr-th3-key-bg-vdv: hsl(268, 47%, 21%);
+  --clr-th3-key-sh-dm: hsl(290, 70%, 36%);
+
+  //  Text
+  --clr-th3-light-yellow: hsl(52, 100%, 62%);
+  --clr-very-dark-blue: hsl(198, 20%, 13%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "League Spartan", sans-serif;
+}
