@@ -1,2 +1,42 @@
 .toggle-switch {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  &__switch {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #444;
+    border-radius: 10px;
+  }
+
+  &__theme-switcher {
+    width: 20px;
+    height: 20px;
+    //border: 2px solid #444;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      display: none;
+    }
+
+    .checkmark {
+      width: calc(100% - 6px);
+      height: calc(100% - 6px);
+      background-color: hsl(6, 63%, 50%);
+      border-radius: 50%;
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    input:checked + .checkmark {
+      opacity: 1;
+      display: inline-block;
+    }
+  }
 }
