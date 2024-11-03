@@ -38,4 +38,9 @@
       display: inline-block;
     }
   }
+
+  &__theme-label {
+    position: absolute;
+    top: 25px;
+  }
 }
