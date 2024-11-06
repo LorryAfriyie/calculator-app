@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export function ToggleSwitch() {
   const [theme, setTheme] = useState<string>("");
+  const activeTheme = useRef(null);
 
   useEffect(() => {
     switch (theme) {
       case "one":
-        //document.body.style.backgroundColor = "blue";
-        console.log("1");
+        document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
         break;
       case "two":
-        // document.body.style.backgroundColor = "red";
-        console.log("2");
+        document.body.style.backgroundColor = "var(--clr-th2-main-bg-lg)";
         break;
       case "three":
-        //document.body.style.backgroundColor = "green";
-        console.log("3");
+        document.body.style.backgroundColor = "var(--clr-th3-main-bg-vdv)";
         break;
       default:
         break;
@@ -40,6 +38,7 @@ export function ToggleSwitch() {
             name={"toggle"}
             value={"one"}
             onChange={handleChange}
+            ref={activeTheme}
           />
           <span className="checkmark"></span>
         </label>
