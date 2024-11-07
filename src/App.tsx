@@ -29,7 +29,38 @@ function ScreenSection() {
 function ButtonSection() {
   return (
     <div className={"button-section"}>
-      <p>Button Section</p>
+      <div className="first-row">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>DEL</button>
+      </div>
+
+      <div className="second-row">
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>+</button>
+      </div>
+
+      <div className="third-row">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>-</button>
+      </div>
+
+      <div className="fourth-row">
+        <button>.</button>
+        <button>0</button>
+        <button>/</button>
+        <button>x</button>
+      </div>
+
+      <div className="fifth-row">
+        <button>RESET</button>
+        <button>=</button>
+      </div>
     </div>
   );
 }
