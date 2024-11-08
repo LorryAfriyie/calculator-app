@@ -3,9 +3,11 @@ import { ToggleSwitch } from "./components/SwitchToggle.tsx";
 function App() {
   return (
     <div className={"app"}>
-      <HeaderSection />
-      <ScreenSection />
-      <ButtonSection />
+      <div className="calculator-container">
+        <HeaderSection />
+        <ScreenSection />
+        <ButtonSection />
+      </div>
     </div>
   );
 }

@@ -1,6 +1,14 @@
 .app {
-  display: flex;
+  /*display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;*/
+}
+
+.calculator-container {
+  width: 400px;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
