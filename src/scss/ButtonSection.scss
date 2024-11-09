@@ -11,6 +11,16 @@
     width: 50px;
     margin: 0.3rem;
   }
+
   .fifth-row {
+    //width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    button {
+      width: 50%;
+    }
   }
 }

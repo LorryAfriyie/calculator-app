@@ -1,4 +1,5 @@
 import { ToggleSwitch } from "./components/SwitchToggle.tsx";
+import React from "react";
 
 function App() {
   return (
@@ -24,37 +25,61 @@ function HeaderSection() {
 function ScreenSection() {
   return (
     <div className={"screen-section"}>
-      <p>Screen Display</p>
+      <input type="text" />
     </div>
   );
 }
 function ButtonSection() {
+  function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    console.log((e.target as HTMLButtonElement).value);
+  }
+
   return (
     <div className={"button-section"}>
       <div className="first-row">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
+        <button value={7} onClick={buttonValue}>
+          7
+        </button>
+        <button value={8} onClick={buttonValue}>
+          8
+        </button>
+        <button value={9} onClick={buttonValue}>
+          9
+        </button>
         <button>DEL</button>
       </div>
 
       <div className="second-row">
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
+        <button value={4} onClick={buttonValue}>
+          4
+        </button>
+        <button value={5} onClick={buttonValue}>
+          5
+        </button>
+        <button value={6} onClick={buttonValue}>
+          6
+        </button>
         <button>+</button>
       </div>
 
       <div className="third-row">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
+        <button value={1} onClick={buttonValue}>
+          1
+        </button>
+        <button value={2} onClick={buttonValue}>
+          2
+        </button>
+        <button value={3} onClick={buttonValue}>
+          3
+        </button>
         <button>-</button>
       </div>
 
       <div className="fourth-row">
         <button>.</button>
-        <button>0</button>
+        <button value={0} onClick={buttonValue}>
+          0
+        </button>
         <button>/</button>
         <button>x</button>
       </div>
