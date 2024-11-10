@@ -1,5 +1,5 @@
 import { ToggleSwitch } from "./components/SwitchToggle.tsx";
-import React from "react";
+import React, { useState } from "react";
 
 function App() {
   return (
@@ -30,6 +30,8 @@ function ScreenSection() {
   );
 }
 function ButtonSection() {
+  const [numbers, setNumbers] = useState<number[]>([]);
+
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     console.log((e.target as HTMLButtonElement).value);
   }
@@ -46,7 +48,7 @@ function ButtonSection() {
         <button value={9} onClick={buttonValue}>
           9
         </button>
-        <button>DEL</button>
+        <button value={"del"}>DEL</button>
       </div>
 
       <div className="second-row">
@@ -59,7 +61,7 @@ function ButtonSection() {
         <button value={6} onClick={buttonValue}>
           6
         </button>
-        <button>+</button>
+        <button value={"add"}>+</button>
       </div>
 
       <div className="third-row">
@@ -72,7 +74,7 @@ function ButtonSection() {
         <button value={3} onClick={buttonValue}>
           3
         </button>
-        <button>-</button>
+        <button value={"subtract"}>-</button>
       </div>
 
       <div className="fourth-row">
@@ -80,13 +82,13 @@ function ButtonSection() {
         <button value={0} onClick={buttonValue}>
           0
         </button>
-        <button>/</button>
-        <button>x</button>
+        <button value={"divide"}>/</button>
+        <button value={"multiply"}>x</button>
       </div>
 
       <div className="fifth-row">
-        <button>RESET</button>
-        <button>=</button>
+        <button value={"reset"}>RESET</button>
+        <button value={"output"}>=</button>
       </div>
     </div>
   );
