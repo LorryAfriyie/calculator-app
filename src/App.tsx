@@ -1,5 +1,5 @@
 import { ToggleSwitch } from "./components/SwitchToggle.tsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
   return (
@@ -32,12 +32,23 @@ function ScreenSection() {
 function ButtonSection() {
   const [numbers, setNumbers] = useState<number[]>([]);
 
+  // Add values into the array
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    console.log((e.target as HTMLButtonElement).value);
+    //console.log((e.target as HTMLButtonElement).value);
+    setNumbers([...numbers, parseInt((e.target as HTMLButtonElement).value)]);
   }
 
+  // RESET Function to remove all values inside the array
+  function resetCalculator() {
+    setNumbers([]);
+  }
+
+  useEffect(() => {
+    console.log(numbers);
+  }, [numbers]);
   return (
     <div className={"button-section"}>
+      <p>{numbers}</p>
       <div className="first-row">
         <button value={7} onClick={buttonValue}>
           7
@@ -87,7 +98,9 @@ function ButtonSection() {
       </div>
 
       <div className="fifth-row">
-        <button value={"reset"}>RESET</button>
+        <button value={"reset"} onClick={resetCalculator}>
+          RESET
+        </button>
         <button value={"output"}>=</button>
       </div>
     </div>
