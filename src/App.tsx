@@ -31,6 +31,7 @@ function ScreenSection() {
 }
 function ButtonSection() {
   const [numbers, setNumbers] = useState<number[]>([]);
+  const [lastNumber, setLastNumber] = useState<number>(0);
 
   // Add values into the array
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -43,9 +44,15 @@ function ButtonSection() {
     setNumbers([]);
   }
 
+  // DELETE Function to delete value in the queue
+  function deleteValue() {
+    setNumbers(numbers.filter((x) => x !== lastNumber));
+  }
+
   useEffect(() => {
-    console.log(numbers);
+    setLastNumber(numbers[numbers.length - 1]);
   }, [numbers]);
+
   return (
     <div className={"button-section"}>
       <p>{numbers}</p>
@@ -59,7 +66,9 @@ function ButtonSection() {
         <button value={9} onClick={buttonValue}>
           9
         </button>
-        <button value={"del"}>DEL</button>
+        <button value={"del"} onClick={deleteValue}>
+          DEL
+        </button>
       </div>
 
       <div className="second-row">

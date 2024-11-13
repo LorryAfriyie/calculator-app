@@ -91,6 +91,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 ### Useful resources
 
 - [Tristate toggle switch](https://dev.to/sanaz/tristate-toggle-switch-509n) - This helped me create a tristate toggle switch.
+- [Removing a item/value from an array](https://www.geeksforgeeks.org/how-to-delete-an-item-from-state-array-in-reactjs/) - This article explained how to remove an item/value from an array with react.js.
 
 ## Author
 
