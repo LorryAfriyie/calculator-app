@@ -32,6 +32,7 @@ function ScreenSection() {
 function ButtonSection() {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [lastNumber, setLastNumber] = useState<number>(0);
+  const [listOfNumbers, setListOfNumbers] = useState<number[]>([]);
 
   // Add values into the array
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -47,6 +48,37 @@ function ButtonSection() {
   // DELETE Function to delete value in the queue
   function deleteValue() {
     setNumbers(numbers.filter((x) => x !== lastNumber));
+  }
+
+  function concatValues() {
+    const i = numbers.reduce((acc, x) => {
+      return parseInt(String(acc) + String(x));
+    });
+
+    setListOfNumbers([...listOfNumbers, i]);
+    setNumbers([]);
+  }
+
+  function test() {
+    /* const i = numbers.reduce((acc, x) => {
+      return parseInt(String(acc) + String(x));
+    });
+
+
+
+    const sum = numbers.reduce((acc, currentValue) => {
+      return acc + currentValue;
+    });
+
+    console.log(i);
+    console.log(sum);*/
+
+    if (numbers.length > 0) {
+      console.log("test");
+      concatValues();
+    }
+
+    console.log(listOfNumbers);
   }
 
   useEffect(() => {
@@ -81,7 +113,9 @@ function ButtonSection() {
         <button value={6} onClick={buttonValue}>
           6
         </button>
-        <button value={"add"}>+</button>
+        <button value={"add"} onClick={concatValues}>
+          +
+        </button>
       </div>
 
       <div className="third-row">
@@ -110,7 +144,9 @@ function ButtonSection() {
         <button value={"reset"} onClick={resetCalculator}>
           RESET
         </button>
-        <button value={"output"}>=</button>
+        <button value={"output"} onClick={test}>
+          =
+        </button>
       </div>
     </div>
   );
