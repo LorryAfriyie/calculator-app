@@ -60,25 +60,9 @@ function ButtonSection() {
   }
 
   function test() {
-    /* const i = numbers.reduce((acc, x) => {
-      return parseInt(String(acc) + String(x));
-    });
-
-
-
-    const sum = numbers.reduce((acc, currentValue) => {
-      return acc + currentValue;
-    });
-
-    console.log(i);
-    console.log(sum);*/
-
     if (numbers.length > 0) {
-      console.log("test");
       concatValues();
     }
-
-    console.log(listOfNumbers);
   }
 
   useEffect(() => {
