@@ -1,14 +1,17 @@
 import { ToggleSwitch } from "./components/SwitchToggle.tsx";
+import { MathOperationsProvider } from "./context/MathOperations.tsx";
 import React, { useEffect, useState } from "react";
 
 function App() {
   return (
     <div className={"app"}>
-      <div className="calculator-container">
-        <HeaderSection />
-        <ScreenSection />
-        <ButtonSection />
-      </div>
+      <MathOperationsProvider>
+        <div className="calculator-container">
+          <HeaderSection />
+          <ScreenSection />
+          <ButtonSection />
+        </div>
+      </MathOperationsProvider>
     </div>
   );
 }
@@ -30,7 +33,7 @@ function ScreenSection() {
   );
 }
 function ButtonSection() {
-  const [numbers, setNumbers] = useState<number[]>([]);
+  /* const [numbers, setNumbers] = useState<number[]>([]);
   const [lastNumber, setLastNumber] = useState<number>(0);
   const [listOfNumbers, setListOfNumbers] = useState<number[]>([]);
 
@@ -67,7 +70,7 @@ function ButtonSection() {
 
   useEffect(() => {
     setLastNumber(numbers[numbers.length - 1]);
-  }, [numbers]);
+  }, [numbers]);*/
 
   return (
     <div className={"button-section"}>
