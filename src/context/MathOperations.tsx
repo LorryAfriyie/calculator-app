@@ -1,6 +1,14 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-const MathOperationsContext = createContext({});
+type MathOperationsContext = {
+  buttonValue: (value: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  resetCalculator: () => void;
+  deleteValue: () => void;
+  concatNumericValues: () => void;
+  showNumbers: () => React.ReactNode;
+};
+
+const MathOperationsContext = createContext({} as MathOperationsContext);
 
 export function useMathOperations() {
   return useContext(MathOperationsContext);
@@ -15,15 +23,19 @@ export function MathOperationsProvider({
   const [lastNumber, setLastNumber] = useState<number>(0);
   const [listOfNumbers, setListOfNumbers] = useState<number[]>([]);
 
-  function buttonValue(value: number) {
-    setNumbers([...numbers, value]);
+  function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    setNumbers([...numbers, parseInt((e.target as HTMLButtonElement).value)]);
+  }
+
+  function showNumbers() {
+    return numbers;
   }
 
   function resetCalculator() {
     setNumbers([]);
   }
 
-  function deleteCalculator() {
+  function deleteValue() {
     setNumbers(numbers.filter((x) => x !== lastNumber));
   }
 
@@ -45,9 +57,9 @@ export function MathOperationsProvider({
       value={{
         buttonValue,
         resetCalculator,
-        deleteCalculator,
+        deleteValue,
         concatNumericValues,
-        numbers,
+        showNumbers,
       }}
     >
       {children}

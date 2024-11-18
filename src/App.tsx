@@ -1,5 +1,8 @@
 import { ToggleSwitch } from "./components/SwitchToggle.tsx";
-import { MathOperationsProvider } from "./context/MathOperations.tsx";
+import {
+  MathOperationsProvider,
+  useMathOperations,
+} from "./context/MathOperations.tsx";
 import React, { useEffect, useState } from "react";
 
 function App() {
@@ -33,7 +36,14 @@ function ScreenSection() {
   );
 }
 function ButtonSection() {
-  /* const [numbers, setNumbers] = useState<number[]>([]);
+  const {
+    buttonValue,
+    resetCalculator,
+    deleteValue,
+    concatNumericValues,
+    showNumbers,
+  } = useMathOperations();
+  /*const [numbers, setNumbers] = useState<number[]>([]);
   const [lastNumber, setLastNumber] = useState<number>(0);
   const [listOfNumbers, setListOfNumbers] = useState<number[]>([]);
 
@@ -70,11 +80,11 @@ function ButtonSection() {
 
   useEffect(() => {
     setLastNumber(numbers[numbers.length - 1]);
-  }, [numbers]);*/
-
+  }, [numbers]);
+*/
   return (
     <div className={"button-section"}>
-      <p>{numbers}</p>
+      <p>{showNumbers()}</p>
       <div className="first-row">
         <button value={7} onClick={buttonValue}>
           7
@@ -100,7 +110,7 @@ function ButtonSection() {
         <button value={6} onClick={buttonValue}>
           6
         </button>
-        <button value={"add"} onClick={concatValues}>
+        <button value={"add"} onClick={concatNumericValues}>
           +
         </button>
       </div>
@@ -131,9 +141,7 @@ function ButtonSection() {
         <button value={"reset"} onClick={resetCalculator}>
           RESET
         </button>
-        <button value={"output"} onClick={test}>
-          =
-        </button>
+        <button value={"output"}>=</button>
       </div>
     </div>
   );
