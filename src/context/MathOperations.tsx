@@ -23,6 +23,7 @@ export function MathOperationsProvider({
   const [lastNumber, setLastNumber] = useState<number>(0);
   const [listOfNumbers, setListOfNumbers] = useState<number[]>([]);
 
+  // Add values into the array
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     setNumbers([...numbers, parseInt((e.target as HTMLButtonElement).value)]);
   }
@@ -31,14 +32,17 @@ export function MathOperationsProvider({
     return numbers;
   }
 
+  // RESET Function to remove all values inside the array
   function resetCalculator() {
     setNumbers([]);
   }
 
+  // DELETE Function to delete value in the queue
   function deleteValue() {
     setNumbers(numbers.filter((x) => x !== lastNumber));
   }
 
+  // CONCATENATE Function to join numeric values into one value
   function concatNumericValues() {
     const values = numbers.reduce((acc, x) => {
       return parseInt(String(acc) + String(x));

@@ -3,7 +3,7 @@ import {
   MathOperationsProvider,
   useMathOperations,
 } from "./context/MathOperations.tsx";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 function App() {
   return (
@@ -29,62 +29,27 @@ function HeaderSection() {
 }
 
 function ScreenSection() {
+  const { showNumbers } = useMathOperations();
+  const screen = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    screen.current.value = showNumbers();
+  }, []);
+
   return (
     <div className={"screen-section"}>
-      <input type="text" />
+      <p>{showNumbers()}</p>
+      <input type="text" ref={screen} />
     </div>
   );
 }
+
 function ButtonSection() {
-  const {
-    buttonValue,
-    resetCalculator,
-    deleteValue,
-    concatNumericValues,
-    showNumbers,
-  } = useMathOperations();
-  /*const [numbers, setNumbers] = useState<number[]>([]);
-  const [lastNumber, setLastNumber] = useState<number>(0);
-  const [listOfNumbers, setListOfNumbers] = useState<number[]>([]);
+  const { buttonValue, resetCalculator, deleteValue, concatNumericValues } =
+    useMathOperations();
 
-  // Add values into the array
-  function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    //console.log((e.target as HTMLButtonElement).value);
-    setNumbers([...numbers, parseInt((e.target as HTMLButtonElement).value)]);
-  }
-
-  // RESET Function to remove all values inside the array
-  function resetCalculator() {
-    setNumbers([]);
-  }
-
-  // DELETE Function to delete value in the queue
-  function deleteValue() {
-    setNumbers(numbers.filter((x) => x !== lastNumber));
-  }
-
-  function concatValues() {
-    const i = numbers.reduce((acc, x) => {
-      return parseInt(String(acc) + String(x));
-    });
-
-    setListOfNumbers([...listOfNumbers, i]);
-    setNumbers([]);
-  }
-
-  function test() {
-    if (numbers.length > 0) {
-      concatValues();
-    }
-  }
-
-  useEffect(() => {
-    setLastNumber(numbers[numbers.length - 1]);
-  }, [numbers]);
-*/
   return (
     <div className={"button-section"}>
-      <p>{showNumbers()}</p>
       <div className="first-row">
         <button value={7} onClick={buttonValue}>
           7
