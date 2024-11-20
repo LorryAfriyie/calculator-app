@@ -5,7 +5,7 @@ type MathOperationsContext = {
   resetCalculator: () => void;
   deleteValue: () => void;
   concatNumericValues: () => void;
-  showNumbers: () => React.ReactNode;
+  numbers: number[];
 };
 
 const MathOperationsContext = createContext({} as MathOperationsContext);
@@ -28,12 +28,8 @@ export function MathOperationsProvider({
     setNumbers([...numbers, parseInt((e.target as HTMLButtonElement).value)]);
   }
 
-  function showNumbers() {
-    return numbers;
-  }
-
   // RESET Function to remove all values inside the array
-  function resetCalculator() {
+  function resetCalculator(): void {
     setNumbers([]);
   }
 
@@ -63,7 +59,7 @@ export function MathOperationsProvider({
         resetCalculator,
         deleteValue,
         concatNumericValues,
-        showNumbers,
+        numbers,
       }}
     >
       {children}

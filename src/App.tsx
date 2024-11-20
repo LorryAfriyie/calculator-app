@@ -3,7 +3,7 @@ import {
   MathOperationsProvider,
   useMathOperations,
 } from "./context/MathOperations.tsx";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 function App() {
   return (
@@ -29,16 +29,16 @@ function HeaderSection() {
 }
 
 function ScreenSection() {
-  const { showNumbers } = useMathOperations();
+  const { numbers } = useMathOperations();
   const screen = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    screen.current.value = showNumbers();
-  }, []);
+    console.log(numbers);
+  }, [numbers]);
 
   return (
     <div className={"screen-section"}>
-      <p>{showNumbers()}</p>
+      <p>{numbers}</p>
       <input type="text" ref={screen} />
     </div>
   );
