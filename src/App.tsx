@@ -3,6 +3,7 @@ import {
   MathOperationsProvider,
   useMathOperations,
 } from "./context/MathOperations.tsx";
+import { Button } from "./components/button.tsx";
 import { useEffect, useRef } from "react";
 
 function App() {
@@ -51,62 +52,49 @@ function ButtonSection() {
   return (
     <div className={"button-section"}>
       <div className="first-row">
-        <button value={7} onClick={buttonValue}>
-          7
-        </button>
-        <button value={8} onClick={buttonValue}>
-          8
-        </button>
-        <button value={9} onClick={buttonValue}>
-          9
-        </button>
-        <button value={"del"} onClick={deleteValue}>
-          DEL
-        </button>
+        <Button onClick={buttonValue} value={7} text={"7"} />
+
+        <Button onClick={buttonValue} value={8} text={"8"} />
+
+        <Button onClick={buttonValue} value={9} text={"9"} />
+
+        <Button onClick={deleteValue} text={"del"} />
       </div>
 
       <div className="second-row">
-        <button value={4} onClick={buttonValue}>
-          4
-        </button>
-        <button value={5} onClick={buttonValue}>
-          5
-        </button>
-        <button value={6} onClick={buttonValue}>
-          6
-        </button>
-        <button value={"add"} onClick={concatNumericValues}>
-          +
-        </button>
+        <Button onClick={buttonValue} value={4} text={"4"} />
+
+        <Button onClick={buttonValue} value={5} text={"5"} />
+
+        <Button onClick={buttonValue} value={6} text={"6"} />
+
+        <Button onClick={concatNumericValues} text={"+"} />
       </div>
 
       <div className="third-row">
-        <button value={1} onClick={buttonValue}>
-          1
-        </button>
-        <button value={2} onClick={buttonValue}>
-          2
-        </button>
-        <button value={3} onClick={buttonValue}>
-          3
-        </button>
-        <button value={"subtract"}>-</button>
+        <Button onClick={buttonValue} value={1} text={"1"} />
+
+        <Button onClick={buttonValue} value={2} text={"2"} />
+
+        <Button onClick={buttonValue} value={3} text={"3"} />
+
+        <Button text={"-"} />
       </div>
 
       <div className="fourth-row">
-        <button>.</button>
-        <button value={0} onClick={buttonValue}>
-          0
-        </button>
-        <button value={"divide"}>/</button>
-        <button value={"multiply"}>x</button>
+        <Button text={"."} />
+
+        <Button onClick={buttonValue} value={0} text={"0"} />
+
+        <Button text={"/"} />
+
+        <Button text={"x"} />
       </div>
 
       <div className="fifth-row">
-        <button value={"reset"} onClick={resetCalculator}>
-          RESET
-        </button>
-        <button value={"output"}>=</button>
+        <Button onClick={resetCalculator} text={"Reset"} />
+
+        <Button text={"="} />
       </div>
     </div>
   );
