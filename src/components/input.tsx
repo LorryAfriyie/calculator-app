@@ -1,3 +1,7 @@
-export function Input() {
-  return <input type="text" />;
-}
+import React from "react";
+
+type Props = {};
+
+export const Input = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
+  return <input ref={ref} {...props} />;
+});

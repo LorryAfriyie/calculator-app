@@ -4,6 +4,7 @@ import {
   useMathOperations,
 } from "./context/MathOperations.tsx";
 import { Button } from "./components/button.tsx";
+import { Input } from "./components/input.tsx";
 import { useEffect, useRef } from "react";
 
 function App() {
@@ -31,16 +32,18 @@ function HeaderSection() {
 
 function ScreenSection() {
   const { numbers } = useMathOperations();
-  const screen = useRef<HTMLInputElement>(null);
+  const screen = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     console.log(numbers);
+    if (screen.current !== null) screen.current.value = numbers.join("");
   }, [numbers]);
 
   return (
     <div className={"screen-section"}>
       <p>{numbers}</p>
-      <input type="text" ref={screen} />
+      {/*<input type="text" ref={screen} />*/}
+      <Input ref={screen} />
     </div>
   );
 }
