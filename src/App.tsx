@@ -31,13 +31,14 @@ function HeaderSection() {
 }
 
 function ScreenSection() {
-  const { numbers } = useMathOperations();
+  const { numbers, listOfNumbers } = useMathOperations();
   const screen = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     console.log(numbers);
+    console.log(`List of numbers: ${listOfNumbers}`);
     if (screen.current !== null) screen.current.value = numbers.join("");
-  }, [numbers]);
+  }, [numbers, listOfNumbers]);
 
   return (
     <div className={"screen-section"}>
@@ -49,8 +50,13 @@ function ScreenSection() {
 }
 
 function ButtonSection() {
-  const { buttonValue, resetCalculator, deleteValue, concatNumericValues } =
-    useMathOperations();
+  const {
+    buttonValue,
+    resetCalculator,
+    deleteValue,
+    concatNumericValues,
+    addition,
+  } = useMathOperations();
 
   return (
     <div className={"button-section"}>
@@ -71,7 +77,7 @@ function ButtonSection() {
 
         <Button onClick={buttonValue} value={6} text={"6"} />
 
-        <Button onClick={concatNumericValues} text={"+"} />
+        <Button onClick={addition} text={"+"} />
       </div>
 
       <div className="third-row">
