@@ -10,10 +10,11 @@ type MathOperationsContext = {
   buttonValue: (value: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   resetCalculator: () => void;
   deleteValue: () => void;
-  concatNumericValues: () => void;
   numbers: number[];
   listOfNumbers: number[];
   addition: () => void;
+  subtraction: () => void;
+  accValue: number;
 };
 
 type MathOperations = {
@@ -30,7 +31,7 @@ export function MathOperationsProvider({ children }: MathOperations) {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [lastNumber, setLastNumber] = useState<number>(0);
   const [listOfNumbers, setListOfNumbers] = useState<number[]>([]);
-  const [accValue, setAccValue] = useState<number>();
+  const [accValue, setAccValue] = useState<number>(0);
 
   // Add values into the array
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -59,24 +60,28 @@ export function MathOperationsProvider({ children }: MathOperations) {
     const values = numbers.reduce((acc, x) => {
       return parseInt(String(acc) + String(x));
     });
+
     setAccValue((prev) => values + prev);
     setListOfNumbers([...listOfNumbers, values]);
     setNumbers([]);
   }
 
-  // CONCATENATE Function to join numeric values into one value
-  function concatNumericValues() {
-    /*const values = numbers.reduce((acc, x) => {
+  function subtraction() {
+    const values = numbers.reduce((acc, x) => {
       return parseInt(String(acc) + String(x));
     });
 
+    if (accValue === 0) setAccValue(values);
+    else setAccValue((prev) => prev - values);
+
     setListOfNumbers([...listOfNumbers, values]);
-    setNumbers([]);*/
+    setNumbers([]);
   }
 
   useEffect(() => {
     setLastNumber(numbers[numbers.length - 1]);
-  }, [numbers]);
+    console.log(accValue);
+  }, [numbers, accValue]);
 
   return (
     <MathOperationsContext.Provider
@@ -84,10 +89,11 @@ export function MathOperationsProvider({ children }: MathOperations) {
         buttonValue,
         resetCalculator,
         deleteValue,
-        concatNumericValues,
         numbers,
         listOfNumbers,
         addition,
+        subtraction,
+        accValue,
       }}
     >
       {children}
