@@ -95,14 +95,10 @@ These could be concepts you're still not completely comfortable with or techniqu
 - [Removing a item/value from an array](https://www.geeksforgeeks.org/how-to-delete-an-item-from-state-array-in-reactjs/) - This article explained how to remove an item/value from an array with react.js.
 - [Array.reduce method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) - This article 
    details the use of the array.reduce method that helped me concatenate the numerical values inside an array.
+- [Type casting on TypeScript](https://blog.logrocket.com/how-to-perform-type-casting-typescript/) - This post goes in depth with how type casting works on TypeScript and which type of
+  casting should be used based on requirement.
 
 ## Author
 
 - Frontend Mentor - [@LorryAfriyie](https://www.frontendmentor.io/profile/LorryAfriyie)
 
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. 
-Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
