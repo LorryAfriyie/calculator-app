@@ -14,6 +14,8 @@ type MathOperationsContext = {
   listOfNumbers: number[];
   addition: () => void;
   subtraction: () => void;
+  division: () => void;
+  multiplication: () => void;
   accValue: number;
 };
 
@@ -36,14 +38,6 @@ export function MathOperationsProvider({ children }: MathOperations) {
   // Add values into the array
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     setNumbers([...numbers, parseInt((e.target as HTMLButtonElement).value)]);
-    /*if (numbers.length > 0) {
-      const values = numbers.reduce((acc, x) => {
-        return parseInt(String(acc) + String(x));
-      });
-
-      setListOfNumbers([...listOfNumbers, values]);
-      console.log(listOfNumbers);
-    }*/
   }
 
   // RESET Function to remove all values inside the array
@@ -61,7 +55,9 @@ export function MathOperationsProvider({ children }: MathOperations) {
       return parseInt(String(acc) + String(x));
     });
 
-    setAccValue((prev) => values + prev);
+    if (accValue === 0) setAccValue(values);
+    else setAccValue((prev) => values + prev);
+
     setListOfNumbers([...listOfNumbers, values]);
     setNumbers([]);
   }
@@ -78,9 +74,34 @@ export function MathOperationsProvider({ children }: MathOperations) {
     setNumbers([]);
   }
 
+  function division() {
+    const values = numbers.reduce((acc, x) => {
+      return parseInt(String(acc) + String(x));
+    });
+
+    if (accValue === 0) setAccValue(values);
+    else setAccValue((prev) => prev / values);
+
+    setListOfNumbers([...listOfNumbers, values]);
+    setNumbers([]);
+  }
+
+  function multiplication() {
+    const values = numbers.reduce((acc, x) => {
+      return parseInt(String(acc) + String(x));
+    });
+
+    if (accValue === 0) setAccValue(values);
+    else setAccValue((prev) => prev * values);
+
+    setListOfNumbers([...listOfNumbers, values]);
+    setNumbers([]);
+  }
+
   useEffect(() => {
     setLastNumber(numbers[numbers.length - 1]);
-    console.log(accValue);
+
+    if (accValue !== 0) console.log(accValue);
   }, [numbers, accValue]);
 
   return (
@@ -93,6 +114,8 @@ export function MathOperationsProvider({ children }: MathOperations) {
         listOfNumbers,
         addition,
         subtraction,
+        division,
+        multiplication,
         accValue,
       }}
     >

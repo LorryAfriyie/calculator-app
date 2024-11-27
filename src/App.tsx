@@ -50,8 +50,15 @@ function ScreenSection() {
 }
 
 function ButtonSection() {
-  const { buttonValue, resetCalculator, deleteValue, addition, subtraction } =
-    useMathOperations();
+  const {
+    buttonValue,
+    resetCalculator,
+    deleteValue,
+    addition,
+    subtraction,
+    division,
+    multiplication,
+  } = useMathOperations();
 
   return (
     <div className={"button-section"}>
@@ -90,9 +97,9 @@ function ButtonSection() {
 
         <Button onClick={buttonValue} value={0} text={"0"} />
 
-        <Button text={"/"} />
+        <Button onClick={division} text={"/"} />
 
-        <Button text={"x"} />
+        <Button onClick={multiplication} text={"x"} />
       </div>
 
       <div className="fifth-row">
