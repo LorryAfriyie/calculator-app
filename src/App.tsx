@@ -5,7 +5,7 @@ import {
 } from "./context/MathOperations.tsx";
 import { Button } from "./components/button.tsx";
 import { Input } from "./components/input.tsx";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   return (
@@ -58,6 +58,7 @@ function ButtonSection() {
     subtraction,
     division,
     multiplication,
+    calculationResult,
   } = useMathOperations();
 
   return (
@@ -105,7 +106,7 @@ function ButtonSection() {
       <div className="fifth-row">
         <Button onClick={resetCalculator} text={"Reset"} />
 
-        <Button text={"="} />
+        <Button onClick={calculationResult} text={"="} />
       </div>
     </div>
   );
