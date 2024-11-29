@@ -38,7 +38,7 @@ function ScreenSection() {
     // console.log(numbers);
     if (screen.current !== null) screen.current.value = numbers.join("");
     // if (screen.current === null) screen.current.value = String(accValue);
-  }, [numbers, listOfNumbers, accValue]);
+  }, [numbers, listOfNumbers]);
 
   return (
     <div className={"screen-section"}>
