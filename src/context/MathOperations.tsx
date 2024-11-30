@@ -38,19 +38,9 @@ export function MathOperationsProvider({ children }: MathOperations) {
   const [operation, setOperation] = useState<string>("");
   const [value, setValue] = useState<number>(0);
 
-  let values = 0;
-
   // Add values into the array
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     setNumbers([...numbers, parseInt((e.target as HTMLButtonElement).value)]);
-
-    if (numbers.length > 0) {
-      setValue(
-        numbers.reduce((acc, x) => {
-          return parseInt(String(acc) + String(x));
-        })
-      );
-    }
   }
 
   // RESET Function to remove all values inside the array
@@ -64,32 +54,16 @@ export function MathOperationsProvider({ children }: MathOperations) {
   }
 
   function addition() {
-    values = numbers.reduce((acc, x) => {
-      return parseInt(String(acc) + String(x));
-    });
-
-    setValue(
-      numbers.reduce((acc, x) => {
-        return parseInt(String(acc) + String(x));
-      })
-    );
-
     setOperation("add");
 
-    /* if (accValue === 0) setAccValue(values);
-    else setAccValue((prev) => values + prev);*/
-
+    if (accValue === 0) setAccValue(value);
+    else setAccValue((prev) => value + prev);
+    setValue(0);
     setListOfNumbers([...listOfNumbers, value]);
     setNumbers([]);
   }
 
   function subtraction() {
-    setValue(
-      numbers.reduce((acc, x) => {
-        return parseInt(String(acc) + String(x));
-      })
-    );
-
     setOperation("subtract");
 
     /* if (accValue === 0) setAccValue(values);
@@ -100,12 +74,6 @@ export function MathOperationsProvider({ children }: MathOperations) {
   }
 
   function division() {
-    setValue(
-      numbers.reduce((acc, x) => {
-        return parseInt(String(acc) + String(x));
-      })
-    );
-
     setOperation("divide");
 
     /* if (accValue === 0) setAccValue(values);
@@ -116,16 +84,11 @@ export function MathOperationsProvider({ children }: MathOperations) {
   }
 
   function multiplication() {
-    setValue(
-      numbers.reduce((acc, x) => {
-        return parseInt(String(acc) + String(x));
-      })
-    );
-
     setOperation("multiply");
 
-    /* if (accValue === 0) setAccValue(values);
-    else setAccValue((prev) => prev * values);*/
+    if (accValue === 0) setAccValue(value);
+    else setAccValue((prev) => prev * value);
+    setValue(0);
 
     setListOfNumbers([...listOfNumbers, value]);
     setNumbers([]);
@@ -134,24 +97,19 @@ export function MathOperationsProvider({ children }: MathOperations) {
   function calculationResult() {
     switch (operation) {
       case "add":
-        if (accValue === 0) {
-          setAccValue(value);
-        } else setAccValue((prev) => value + prev);
+        setAccValue((prev) => value + prev);
         console.log("adding");
         break;
       case "subtract":
-        if (accValue === 0) setAccValue(values);
-        else setAccValue((prev) => prev - values);
+        setAccValue((prev) => prev - value);
         console.log("Subtracting");
         break;
       case "divide":
-        if (accValue === 0) setAccValue(values);
-        else setAccValue((prev) => prev / values);
+        setAccValue((prev) => prev / value);
         console.log("dividing");
         break;
       case "multiply":
-        if (accValue === 0) setAccValue(values);
-        else setAccValue((prev) => prev * values);
+        setAccValue((prev) => prev * value);
         console.log("multiplying");
         break;
       default:
@@ -160,9 +118,14 @@ export function MathOperationsProvider({ children }: MathOperations) {
   }
 
   useEffect(() => {
+    setValue(
+      numbers.reduce((acc, x) => {
+        return parseInt(String(acc) + String(x));
+      }, 0)
+    );
+
     setLastNumber(numbers[numbers.length - 1]);
-    console.log(`Value: ${value}`);
-    if (accValue != 0) console.log(`Acc value: ${accValue}`);
+    console.log(`Acc value: ${accValue}`);
   }, [numbers, accValue, listOfNumbers, value]);
 
   return (
