@@ -31,11 +31,22 @@ export function useMathOperations() {
 }
 
 export function MathOperationsProvider({ children }: MathOperations) {
+  // Numeric values that were selected are added into the array
   const [numbers, setNumbers] = useState<number[]>([]);
+
+  // Used to store the last value of the numbers array
   const [lastNumber, setLastNumber] = useState<number>(0);
+
+  // ???
   const [listOfNumbers, setListOfNumbers] = useState<number[]>([]);
+
+  // Used to store calculation of two or more numeric values
   const [accValue, setAccValue] = useState<number>(0);
+
+  // Used to store the type of calculation operation to be used
   const [operation, setOperation] = useState<string>("");
+
+  // Used to temporarily store the last entered value(s) from the numbers array
   const [value, setValue] = useState<number>(0);
 
   // Add values into the array
@@ -58,7 +69,6 @@ export function MathOperationsProvider({ children }: MathOperations) {
 
     if (accValue === 0) setAccValue(value);
     else setAccValue((prev) => value + prev);
-    setValue(0);
     setListOfNumbers([...listOfNumbers, value]);
     setNumbers([]);
   }
@@ -88,7 +98,6 @@ export function MathOperationsProvider({ children }: MathOperations) {
 
     if (accValue === 0) setAccValue(value);
     else setAccValue((prev) => prev * value);
-    setValue(0);
 
     setListOfNumbers([...listOfNumbers, value]);
     setNumbers([]);
@@ -123,6 +132,9 @@ export function MathOperationsProvider({ children }: MathOperations) {
         return parseInt(String(acc) + String(x));
       }, 0)
     );
+
+    console.log(`List of numbers: ${listOfNumbers}`);
+    console.log(`Numbers: ${numbers}`);
 
     setLastNumber(numbers[numbers.length - 1]);
     console.log(`Acc value: ${accValue}`);
