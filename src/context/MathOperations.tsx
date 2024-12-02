@@ -37,7 +37,7 @@ export function MathOperationsProvider({ children }: MathOperations) {
   // Used to store the last value of the numbers array
   const [lastNumber, setLastNumber] = useState<number>(0);
 
-  // ???
+  // Queues up the entered numeric values to be calculated
   const [listOfNumbers, setListOfNumbers] = useState<number[]>([]);
 
   // Used to store calculation of two or more numeric values
@@ -132,13 +132,9 @@ export function MathOperationsProvider({ children }: MathOperations) {
         return parseInt(String(acc) + String(x));
       }, 0)
     );
-
-    console.log(`List of numbers: ${listOfNumbers}`);
-    console.log(`Numbers: ${numbers}`);
-
+    console.log(`List of number: ${listOfNumbers}`);
     setLastNumber(numbers[numbers.length - 1]);
-    console.log(`Acc value: ${accValue}`);
-  }, [numbers, accValue, listOfNumbers, value]);
+  }, [numbers, listOfNumbers]);
 
   return (
     <MathOperationsContext.Provider

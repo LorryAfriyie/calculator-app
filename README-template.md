@@ -97,6 +97,8 @@ These could be concepts you're still not completely comfortable with or techniqu
    details the use of the array.reduce method that helped me concatenate the numerical values inside an array.
 - [Type casting on TypeScript](https://blog.logrocket.com/how-to-perform-type-casting-typescript/) - This post goes in depth with how type casting works on TypeScript and which type of
   casting should be used based on requirement.
+- [Calculator App with React.js](https://www.sitepoint.com/react-tutorial-build-calculator-app/) - This blog post is a
+  reference to how to create a calculator application using react.js
 
 ## Author
 
