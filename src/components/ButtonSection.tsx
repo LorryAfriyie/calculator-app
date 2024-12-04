@@ -10,7 +10,6 @@ export function ButtonSection() {
     subtraction,
     division,
     multiplication,
-    calculationResult,
   } = useMathOperations();
 
   return (
@@ -58,7 +57,7 @@ export function ButtonSection() {
       <div className="fifth-row">
         <Button onClick={resetCalculator} text={"Reset"} />
 
-        <Button onClick={calculationResult} text={"="} />
+        <Button text={"="} />
       </div>
     </div>
   );
