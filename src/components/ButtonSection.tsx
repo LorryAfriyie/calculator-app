@@ -1,4 +1,4 @@
-import { useMathOperations } from "../context/MathOperations.tsx";
+import { useCalcOperations } from "../context/CalcOperations.tsx";
 import { Button } from "./button.tsx";
 
 export function ButtonSection() {
@@ -6,11 +6,9 @@ export function ButtonSection() {
     buttonValue,
     resetCalculator,
     deleteValue,
-    addition,
-    subtraction,
-    division,
-    multiplication,
-  } = useMathOperations();
+    commaHandler,
+    signHandler,
+  } = useCalcOperations();
 
   return (
     <div className={"button-section"}>
@@ -31,7 +29,7 @@ export function ButtonSection() {
 
         <Button onClick={buttonValue} value={6} text={"6"} />
 
-        <Button onClick={addition} text={"+"} />
+        <Button onClick={signHandler} value={"+"} text={"+"} />
       </div>
 
       <div className="third-row">
@@ -41,23 +39,23 @@ export function ButtonSection() {
 
         <Button onClick={buttonValue} value={3} text={"3"} />
 
-        <Button onClick={subtraction} text={"-"} />
+        <Button onClick={signHandler} value={"-"} text={"-"} />
       </div>
 
       <div className="fourth-row">
-        <Button text={"."} />
+        <Button onClick={commaHandler} text={"."} value={"."} />
 
         <Button onClick={buttonValue} value={0} text={"0"} />
 
-        <Button onClick={division} text={"/"} />
+        <Button onClick={signHandler} value={"/"} text={"/"} />
 
-        <Button onClick={multiplication} text={"x"} />
+        <Button onClick={signHandler} value={"x"} text={"x"} />
       </div>
 
       <div className="fifth-row">
         <Button onClick={resetCalculator} text={"Reset"} />
 
-        <Button text={"="} />
+        <Button value={"="} text={"="} />
       </div>
     </div>
   );

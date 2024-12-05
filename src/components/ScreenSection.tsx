@@ -1,21 +1,13 @@
-import { useMathOperations } from "../context/MathOperations.tsx";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useCalcOperations } from "../context/CalcOperations.tsx";
 
-interface ScreenSectionProps {
-  display?: number;
-}
-
-export function ScreenSection({ display }: ScreenSectionProps) {
-  const { numbers } = useMathOperations();
+export function ScreenSection() {
+  const { calc } = useCalcOperations();
   const screen = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (screen.current !== null) screen.current.value = numbers.join("");
-  }, [numbers]);
 
   return (
     <div className={"screen-section"}>
-      <p className={"value-display"}>{display}</p>
+      <p className={"value-display"}>{calc.num ? calc.num : calc.res}</p>
     </div>
   );
 }
