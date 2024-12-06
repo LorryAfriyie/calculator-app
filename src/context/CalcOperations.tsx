@@ -109,14 +109,13 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   function equalHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
 
-    const equalSign = (e.target as HTMLButtonElement).value;
     if (calc.sign && calc.num) {
       setCalc({
         ...calc,
         res:
           calc.num === "0" && calc.sign === "/"
             ? 0
-            : calculation(Number(calc.num), Number(calc.res), equalSign),
+            : calculation(Number(calc.num), Number(calc.res), calc.sign),
         sign: "",
         num: 0,
       });
@@ -126,16 +125,12 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   const calculation = (a: number, b: number, sign: string) => {
     switch (sign) {
       case "+":
-        console.log("addition");
         return a + b;
       case "-":
-        console.log("subtract");
         return a - b;
       case "*":
-        console.log("multiply");
         return a * b;
       case "/":
-        console.log("divide");
         return a / b;
       default:
         break;

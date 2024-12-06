@@ -8,6 +8,7 @@ export function ButtonSection() {
     deleteValue,
     commaHandler,
     signHandler,
+    equalHandler,
   } = useCalcOperations();
 
   return (
@@ -55,7 +56,7 @@ export function ButtonSection() {
       <div className="fifth-row">
         <Button onClick={resetCalculator} text={"Reset"} />
 
-        <Button value={"="} text={"="} />
+        <Button onClick={equalHandler} value={"="} text={"="} />
       </div>
     </div>
   );
