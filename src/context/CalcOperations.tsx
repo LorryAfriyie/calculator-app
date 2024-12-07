@@ -54,16 +54,18 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     e.preventDefault();
     const value = (e.target as HTMLButtonElement).value;
 
-    setCalc({
-      ...calc,
-      num:
-        calc.num === 0 && value === "0"
-          ? "0"
-          : Number(calc.num) % 1 === 0
-          ? Number(calc.num + value)
-          : calc.num + value,
-      res: !calc.sign ? 0 : calc.res,
-    });
+    if (calc.num.toString().length < 16) {
+      setCalc({
+        ...calc,
+        num:
+          calc.num === 0 && value === "0"
+            ? "0"
+            : Number(calc.num) % 1 === 0
+            ? Number(calc.num + value)
+            : calc.num + value,
+        res: !calc.sign ? 0 : calc.res,
+      });
+    }
   }
 
   // RESET Function to remove all values inside the array
