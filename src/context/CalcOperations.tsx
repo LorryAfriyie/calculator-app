@@ -139,6 +139,14 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     }
   };
 
+  function toLocalString(num: number | string) {
+    return String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
+  }
+
+  function removeSpaces(num: number | string) {
+    return num.toString().replace(/\s/g, "");
+  }
+
   return (
     <CalcOperationsContext.Provider
       value={{
