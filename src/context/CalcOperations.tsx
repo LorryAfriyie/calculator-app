@@ -4,6 +4,7 @@ import React, {
   ReactNode,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from "react";
 
@@ -103,7 +104,11 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     setCalc({
       ...calc,
       sign: mathSign,
-      res: !Number(calc.res) && Number(calc.num) ? Number(calc.num) : calc.res,
+      res: !Number(calc.num)
+        ? calc.res
+        : !Number(calc.res)
+        ? Number(calc.num)
+        : calculation(Number(calc.res), Number(calc.num), calc.sign),
       num: 0,
     });
   }
@@ -117,7 +122,7 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
         res:
           calc.num === "0" && calc.sign === "/"
             ? 0
-            : calculation(Number(calc.num), Number(calc.res), calc.sign),
+            : calculation(Number(calc.res), Number(calc.num), calc.sign),
         sign: "",
         num: 0,
       });
@@ -146,6 +151,10 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   function removeSpaces(num: number | string) {
     return num.toString().replace(/\s/g, "");
   }
+
+  useEffect(() => {
+    console.log(calc.res);
+  }, [calc.res]);
 
   return (
     <CalcOperationsContext.Provider
