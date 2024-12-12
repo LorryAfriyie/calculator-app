@@ -50,7 +50,7 @@ export function ButtonSection() {
 
         <Button onClick={signHandler} value={"/"} text={"/"} />
 
-        <Button onClick={signHandler} value={"x"} text={"x"} />
+        <Button onClick={signHandler} value={"*"} text={"x"} />
       </div>
 
       <div className="fifth-row">

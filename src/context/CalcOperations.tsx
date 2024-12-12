@@ -59,11 +59,9 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
       setCalc({
         ...calc,
         num:
-          calc.num === 0 && value === "0"
-            ? "0"
-            : Number(calc.num) % 1 === 0
+          Number(calc.num) % 1 === 0 && !calc.num.toString().includes(".")
             ? Number(calc.num + value)
-            : calc.num + value,
+            : Number(calc.num + value),
         res: !calc.sign ? 0 : calc.res,
       });
     }
