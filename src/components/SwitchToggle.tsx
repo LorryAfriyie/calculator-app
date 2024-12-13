@@ -1,23 +1,40 @@
 import React, { useEffect, useState, useRef } from "react";
 
+interface SwitchToggleProps {
+  calTheme: string;
+}
+
 export function ToggleSwitch() {
   const [theme, setTheme] = useState<string>("");
-  const activeTheme = useRef(null);
+  const activeTheme = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    switch (theme) {
-      case "one":
-        document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
-        break;
-      case "two":
-        document.body.style.backgroundColor = "var(--clr-th2-main-bg-lg)";
-        break;
-      case "three":
-        document.body.style.backgroundColor = "var(--clr-th3-main-bg-vdv)";
-        break;
-      default:
-        break;
+    function themeSwitch(calTheme: string) {
+      switch (calTheme) {
+        case "one":
+          document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
+          break;
+        case "two":
+          document.body.style.backgroundColor = "var(--clr-th2-main-bg-lg)";
+          break;
+        case "three":
+          document.body.style.backgroundColor = "var(--clr-th3-main-bg-vdv)";
+          break;
+        default:
+          break;
+      }
     }
+
+    function active() {
+      if (activeTheme.current !== null) {
+        activeTheme.current.checked = true;
+        document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
+      }
+    }
+
+    themeSwitch(theme);
+
+    if (theme === "") active();
   }, [theme]);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
