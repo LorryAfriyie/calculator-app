@@ -1,14 +1,15 @@
-import React, { useEffect, useState, useRef } from "react";
-
-interface SwitchToggleProps {
-  calTheme: string;
-}
+import React, { useEffect, useRef } from "react";
+import { useThemeContext } from "../context/ThemeContext";
 
 export function ToggleSwitch() {
-  const [theme, setTheme] = useState<string>("");
+  // useContext
+  const { theme, setTheme } = useThemeContext();
+
+  // useRef declaration
   const activeTheme = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
+    // Function that encapsulates background theme colors and switches based on chosen theme
     function themeSwitch(calTheme: string) {
       switch (calTheme) {
         case "one":
@@ -25,18 +26,22 @@ export function ToggleSwitch() {
       }
     }
 
+    // Function that encapsulates the first theme colors
     function active() {
-      if (activeTheme.current !== null) {
+      if (activeTheme.current != null) {
         activeTheme.current.checked = true;
         document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
       }
     }
 
+    // Theme switch function
     themeSwitch(theme);
 
-    if (theme === "") active();
+    // Set the first theme as the default theme on launch
+    if (!theme) active();
   }, [theme]);
 
+  // Handle toggle switch changes and stores value into setTheme
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTheme(e.target.value);
   }

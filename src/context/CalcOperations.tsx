@@ -4,7 +4,6 @@ import React, {
   ReactNode,
   SetStateAction,
   useContext,
-  useEffect,
   useState,
 } from "react";
 
@@ -149,10 +148,6 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   function removeSpaces(num: number | string) {
     return num.toString().replace(/\s/g, "");
   }
-
-  useEffect(() => {
-    console.log(calc.res);
-  }, [calc.res]);
 
   return (
     <CalcOperationsContext.Provider
