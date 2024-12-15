@@ -1,11 +1,14 @@
 .screen-section {
   width: 100%;
-
+  border-radius: 7px;
   .value-display {
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: flex-end;
     height: 90px;
-    border: 1px solid black;
+    padding: 10px 10px 0 0;
+    font-size: 2.25rem;
+    font-weight: 600;
   }
 }
