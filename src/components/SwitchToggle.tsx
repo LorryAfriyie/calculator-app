@@ -48,6 +48,8 @@ export function ToggleSwitch() {
 
   return (
     <div className="toggle-switch">
+      <p>theme</p>
+      
       <div className={"toggle-switch__switch"}>
         <label htmlFor="one" className="toggle-switch__theme-switcher">
           <div className="toggle-switch__theme-label">
