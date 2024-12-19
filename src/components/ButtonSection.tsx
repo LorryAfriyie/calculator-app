@@ -1,4 +1,6 @@
+import { useRef, useEffect } from "react";
 import { useCalcOperations } from "../context/CalcOperations.tsx";
+import { useThemeContext } from "../context/ThemeContext";
 import { Button } from "./button.tsx";
 
 export function ButtonSection() {
@@ -11,8 +13,40 @@ export function ButtonSection() {
     equalHandler,
   } = useCalcOperations();
 
+  const { theme } = useThemeContext();
+
+  const btnBg = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function BgSwitch(theme: string) {
+      switch (theme) {
+        case "one":
+          btnBg.current!.style.backgroundColor =
+            "var(--clr-th1-toggle-and-key-bg)";
+          break;
+        case "two":
+          btnBg.current!.style.backgroundColor =
+            "var(--clr-th2-toggle-and-key-bg-gr)";
+          break;
+        case "three":
+          btnBg.current!.style.backgroundColor =
+            "var( --clr-th3-toggle-and-key-and-scrn-bg-vdv)";
+          break;
+        default:
+          break;
+      }
+    }
+
+    function active() {
+      btnBg.current!.style.backgroundColor = "var(--clr-th1-toggle-and-key-bg)";
+    }
+
+    active();
+    BgSwitch(theme);
+  }, [theme]);
+
   return (
-    <div className={"button-section"}>
+    <div className={"button-section"} ref={btnBg}>
       <div className="first-row">
         <Button onClick={buttonValue} value={7} text={"7"} />
 

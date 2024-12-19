@@ -7,6 +7,7 @@ export function ToggleSwitch() {
 
   // useRef declaration
   const activeTheme = useRef<HTMLInputElement | null>(null);
+  const themeTag = useRef<HTMLParagraphElement | null>(null);
 
   useEffect(() => {
     // Function that encapsulates background theme colors and switches based on chosen theme
@@ -14,12 +15,16 @@ export function ToggleSwitch() {
       switch (calTheme) {
         case "one":
           document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
+          themeTag.current!.style.color = "var(--clr-th1-key-bg-lgo)";
           break;
         case "two":
           document.body.style.backgroundColor = "var(--clr-th2-main-bg-lg)";
+          themeTag.current!.style.color =
+            "var(--clr-th2-very-dark-grayish-yellow)";
           break;
         case "three":
           document.body.style.backgroundColor = "var(--clr-th3-main-bg-vdv)";
+          themeTag.current!.style.color = "var(--clr-th3-light-yellow)";
           break;
         default:
           break;
@@ -31,6 +36,7 @@ export function ToggleSwitch() {
       if (activeTheme.current != null) {
         activeTheme.current.checked = true;
         document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
+        themeTag.current!.style.color = "var(--clr-th1-key-bg-lgo)";
       }
     }
 
@@ -48,8 +54,8 @@ export function ToggleSwitch() {
 
   return (
     <div className="toggle-switch">
-      <p>theme</p>
-      
+      <p ref={themeTag}>theme</p>
+
       <div className={"toggle-switch__switch"}>
         <label htmlFor="one" className="toggle-switch__theme-switcher">
           <div className="toggle-switch__theme-label">
