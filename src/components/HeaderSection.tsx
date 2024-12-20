@@ -40,7 +40,10 @@ export function HeaderSection() {
   }, [theme]);
   return (
     <div className={"header-section"}>
-      <p ref={logo}>calc</p>
+      <p ref={logo} className="logo">
+        calc
+      </p>
+      
       <ToggleSwitch />
     </div>
   );

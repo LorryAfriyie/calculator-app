@@ -6,8 +6,9 @@ export function ToggleSwitch() {
   const { theme, setTheme } = useThemeContext();
 
   // useRef declaration
-  const activeTheme = useRef<HTMLInputElement | null>(null);
-  const themeTag = useRef<HTMLParagraphElement | null>(null);
+  const activeTheme = useRef<HTMLInputElement | null>(null),
+    themeLabel = useRef<HTMLParagraphElement | null>(null),
+    toggleSwitch = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Function that encapsulates background theme colors and switches based on chosen theme
@@ -15,16 +16,22 @@ export function ToggleSwitch() {
       switch (calTheme) {
         case "one":
           document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
-          themeTag.current!.style.color = "var(--clr-th1-key-bg-lgo)";
+          themeLabel.current!.style.color = "var(--clr-th1-key-bg-lgo)";
+          toggleSwitch.current!.style.backgroundColor =
+            "var(--clr-th1-toggle-and-key-bg)";
           break;
         case "two":
           document.body.style.backgroundColor = "var(--clr-th2-main-bg-lg)";
-          themeTag.current!.style.color =
+          themeLabel.current!.style.color =
             "var(--clr-th2-very-dark-grayish-yellow)";
+          toggleSwitch.current!.style.backgroundColor =
+            "var(--clr-th2-toggle-and-key-bg-gr)";
           break;
         case "three":
           document.body.style.backgroundColor = "var(--clr-th3-main-bg-vdv)";
-          themeTag.current!.style.color = "var(--clr-th3-light-yellow)";
+          themeLabel.current!.style.color = "var(--clr-th3-light-yellow)";
+          toggleSwitch.current!.style.backgroundColor =
+            "var(--clr-th3-toggle-and-key-and-scrn-bg-vdv)";
           break;
         default:
           break;
@@ -36,7 +43,9 @@ export function ToggleSwitch() {
       if (activeTheme.current != null) {
         activeTheme.current.checked = true;
         document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
-        themeTag.current!.style.color = "var(--clr-th1-key-bg-lgo)";
+        themeLabel.current!.style.color = "var(--clr-th1-key-bg-lgo)";
+        toggleSwitch.current!.style.backgroundColor =
+          "var(--clr-th1-toggle-and-key-bg)";
       }
     }
 
@@ -54,9 +63,11 @@ export function ToggleSwitch() {
 
   return (
     <div className="toggle-switch">
-      <p ref={themeTag}>theme</p>
+      <p ref={themeLabel} className="theme-label">
+        theme
+      </p>
 
-      <div className={"toggle-switch__switch"}>
+      <div className={"toggle-switch__switch"} ref={toggleSwitch}>
         <label htmlFor="one" className="toggle-switch__theme-switcher">
           <div className="toggle-switch__theme-label">
             <small>1</small>
