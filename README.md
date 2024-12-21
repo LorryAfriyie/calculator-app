@@ -1,6 +1,6 @@
 # Frontend Mentor - Calculator app solution
 
-This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -35,7 +35,7 @@ Users should be able to:
 
 Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
 
 Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
 
@@ -67,15 +67,17 @@ To see how you can add code snippets, see below:
 ```html
 <h1>Some HTML code I'm proud of</h1>
 ```
+
 ```css
 .proud-of-this-css {
   color: papayawhip;
 }
 ```
+
 ```js
 const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+  console.log("🎉");
+};
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
@@ -92,14 +94,16 @@ If you want more help with writing markdown, we'd recommend checking out [The Ma
 
 - [Tristate toggle switch](https://dev.to/sanaz/tristate-toggle-switch-509n) - This helped me create a tristate toggle switch.
 - [Removing a item/value from an array](https://www.geeksforgeeks.org/how-to-delete-an-item-from-state-array-in-reactjs/) - This article explained how to remove an item/value from an array with react.js.
-- [Array.reduce method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) - This article 
-   details the use of the array.reduce method that helped me concatenate the numerical values inside an array.
+- [Array.reduce method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) - This article
+  details the use of the array.reduce method that helped me concatenate the numerical values inside an array.
 - [Type casting on TypeScript](https://blog.logrocket.com/how-to-perform-type-casting-typescript/) - This post goes in depth with how type casting works on TypeScript and which type of
   casting should be used based on requirement.
 - [Calculator App with React.js](https://www.sitepoint.com/react-tutorial-build-calculator-app/) - This blog post is a
   reference to how to create a calculator application using react.js
+- [Value checking using TypeScript](https://www.webdevtutor.net/blog/typescript-check-if-it-is-number) - This post details how to check if value is of type number in TypeScript.
 
 ## Author
 
 - Frontend Mentor - [@LorryAfriyie](https://www.frontendmentor.io/profile/LorryAfriyie)
-****
+
+---
