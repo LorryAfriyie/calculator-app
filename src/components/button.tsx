@@ -18,30 +18,27 @@ export function Button({ onClick, text, value }: ButtonProps) {
     function BtnColorSwitch(theme: string) {
       switch (theme) {
         case "one":
-          btnText.current!.style.color = "var(--clr-th1-key-bg-ddb)";
-          if (i === "number")
-            btn.current!.style.backgroundColor = "var(--clr-th1-key-bg-lgo)";
-          if (i === "string" && value != "=")
-            btn.current!.style.backgroundColor = "var(--clr-th1-key-bg-lgo)";
+          BtnColors("var(--clr-th1-key-bg-ddb)", "var(--clr-th1-key-bg-lgo");
           break;
         case "two":
-          btnText.current!.style.color =
-            "var(--clr-th2-very-dark-grayish-yellow)";
-          if (i === "number")
-            btn.current!.style.backgroundColor = "var(--clr-th2-key-bg-lgy)";
-          if (i === "string" && value != "=")
-            btn.current!.style.backgroundColor = "var(--clr-th2-key-bg-lgy)";
+          BtnColors(
+            "var(--clr-th2-very-dark-grayish-yellow)",
+            "var(--clr-th2-key-bg-lgy)"
+          );
           break;
         case "three":
-          btnText.current!.style.color = "var(--clr-th3-light-yellow)";
-          if (i === "number")
-            btn.current!.style.backgroundColor = "var(--clr-th3-key-bg-vdv)";
-          if (i === "string" && value != "=")
-            btn.current!.style.backgroundColor = "var(--clr-th3-key-bg-vdv)";
+          BtnColors("var(--clr-th3-light-yellow)", "var(--clr-th3-key-bg-vdv)");
           break;
         default:
           break;
       }
+    }
+
+    function BtnColors(btnTextColor: string, btnColor: string) {
+      btnText.current!.style.color = btnTextColor;
+      if (i === "number") btn.current!.style.backgroundColor = btnColor;
+      if (i === "string" && value != "=")
+        btn.current!.style.backgroundColor = btnColor;
     }
 
     function activeColor() {

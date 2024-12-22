@@ -16,25 +16,26 @@ export function ScreenSection() {
     function themeSwitch(theme: string) {
       switch (theme) {
         case "one":
-          screen.current!.style.backgroundColor = "var(--clr-th1-scrn-bg)";
-          text.current!.style.color = "var(--clr-white)";
+          ScreenColors("var(--clr-th1-scrn-bg)", "var(--clr-white)");
           break;
         case "two":
-          screen.current!.style.backgroundColor = "var(--clr-th2-scrn-bg-vlg)";
-          text.current!.style.color = "var(--clr-th2-very-dark-grayish-yellow)";
+          ScreenColors(
+            "var(--clr-th2-scrn-bg-vlg)",
+            "var(--clr-th2-very-dark-grayish-yellow)"
+          );
           break;
         case "three":
-          screen.current!.style.backgroundColor =
-            "var(--clr-th3-toggle-and-key-and-scrn-bg-vdv)";
-          text.current!.style.color = "var(--clr-th3-light-yellow)";
+          ScreenColors(
+            "var(--clr-th3-toggle-and-key-and-scrn-bg-vdv)",
+            "var(--clr-th3-light-yellow)"
+          );
           break;
       }
     }
 
-    // Function that encapsulates the first theme colors
-    function active() {
-      screen.current!.style.backgroundColor = "var(--clr-th1-scrn-bg)";
-      text.current!.style.color = "var(--clr-white)";
+    function ScreenColors(screenBackground: string, textColor: string) {
+      screen.current!.style.backgroundColor = screenBackground;
+      text.current!.style.color = textColor;
     }
 
     // Theme switch function
@@ -42,7 +43,7 @@ export function ScreenSection() {
 
     // Set the first theme as the default theme on launch
     if (!theme) {
-      active();
+      ScreenColors("var(--clr-th1-scrn-bg)", "var(--clr-white)");
     }
   });
 

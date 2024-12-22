@@ -15,23 +15,25 @@ export function ToggleSwitch() {
     function themeSwitch(calTheme: string) {
       switch (calTheme) {
         case "one":
-          document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
-          themeLabel.current!.style.color = "var(--clr-th1-key-bg-lgo)";
-          toggleSwitch.current!.style.backgroundColor =
-            "var(--clr-th1-toggle-and-key-bg)";
+          Colors(
+            "var(--clr-th1-main-bg)",
+            "var(--clr-th1-key-bg-lgo)",
+            "var(--clr-th1-toggle-and-key-bg)"
+          );
           break;
         case "two":
-          document.body.style.backgroundColor = "var(--clr-th2-main-bg-lg)";
-          themeLabel.current!.style.color =
-            "var(--clr-th2-very-dark-grayish-yellow)";
-          toggleSwitch.current!.style.backgroundColor =
-            "var(--clr-th2-toggle-and-key-bg-gr)";
+          Colors(
+            "var(--clr-th2-main-bg-lg)",
+            "var(--clr-th2-very-dark-grayish-yellow)",
+            "var(--clr-th2-toggle-and-key-bg-gr)"
+          );
           break;
         case "three":
-          document.body.style.backgroundColor = "var(--clr-th3-main-bg-vdv)";
-          themeLabel.current!.style.color = "var(--clr-th3-light-yellow)";
-          toggleSwitch.current!.style.backgroundColor =
-            "var(--clr-th3-toggle-and-key-and-scrn-bg-vdv)";
+          Colors(
+            "var(--clr-th3-main-bg-vdv)",
+            "var(--clr-th3-light-yellow)",
+            "var(--clr-th3-toggle-and-key-and-scrn-bg-vdv)"
+          );
           break;
         default:
           break;
@@ -42,11 +44,22 @@ export function ToggleSwitch() {
     function active() {
       if (activeTheme.current != null) {
         activeTheme.current.checked = true;
-        document.body.style.backgroundColor = "var(--clr-th1-main-bg)";
-        themeLabel.current!.style.color = "var(--clr-th1-key-bg-lgo)";
-        toggleSwitch.current!.style.backgroundColor =
-          "var(--clr-th1-toggle-and-key-bg)";
+        Colors(
+          "var(--clr-th1-main-bg)",
+          "var(--clr-th1-key-bg-lgo)",
+          "var(--clr-th1-toggle-and-key-bg)"
+        );
       }
+    }
+
+    function Colors(
+      bodyColor: string,
+      labelColor: string,
+      toggleBackground: string
+    ) {
+      document.body.style.backgroundColor = bodyColor;
+      themeLabel.current!.style.color = labelColor;
+      toggleSwitch.current!.style.backgroundColor = toggleBackground;
     }
 
     // Theme switch function
