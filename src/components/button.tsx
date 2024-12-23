@@ -45,16 +45,14 @@ export function Button({ onClick, text, value }: ButtonProps) {
       btnText.current!.style.color = "var(--clr-th1-very-dark-grayish-blue)";
     }
 
-    activeColor();
-
-    console.log(typeof value + " " + text);
+    // activeColor();
 
     BtnColorSwitch(theme);
   }, [theme, value, text, i]);
 
   return (
     <button onClick={onClick} value={value} ref={btn}>
-      <p ref={btnText}>{text}</p>
+      {text}
     </button>
   );
 }

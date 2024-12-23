@@ -53,7 +53,6 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     const value = (e.target as HTMLButtonElement).value;
-
     if (calc.num.toString().length < 16) {
       setCalc({
         ...calc,
