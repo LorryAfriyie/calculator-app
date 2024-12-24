@@ -45,9 +45,38 @@ export function ButtonSection() {
     BgSwitch(theme);
   }, [theme]);
 
+  const button = [
+    { value: 7, text: "7", method: buttonValue },
+    { value: 8, text: "8", method: buttonValue },
+    { value: 9, text: "9", method: buttonValue },
+    { value: "", text: "del", method: deleteValue },
+    { value: 4, text: "4", method: buttonValue },
+    { value: 5, text: "5", method: buttonValue },
+    { value: 6, text: "6", method: buttonValue },
+    { value: "+", text: "+", method: signHandler },
+    { value: 1, text: "1", method: buttonValue },
+    { value: 2, text: "2", method: buttonValue },
+    { value: 3, text: "3", method: buttonValue },
+    { value: "-", text: "-", method: signHandler },
+    { value: ".", text: ".", method: buttonValue },
+    { value: 0, text: "0", method: buttonValue },
+    { value: "/", text: "/", method: signHandler },
+    { value: "*", text: "*", method: signHandler },
+  ];
+
   return (
     <div className={"button-section"} ref={btnBg}>
-      <div className="first-row">
+      <div className="four-row-btn">
+        {button.map((x, index) => {
+          return (
+            <div key={index}>
+              <Button onClick={x.method} value={x.value} text={x.text} />
+            </div>
+          );
+        })}
+      </div>
+
+      {/* <div className="first-row">
         <Button onClick={buttonValue} value={7} text={"7"} />
 
         <Button onClick={buttonValue} value={8} text={"8"} />
@@ -85,7 +114,7 @@ export function ButtonSection() {
         <Button onClick={signHandler} value={"/"} text={"/"} />
 
         <Button onClick={signHandler} value={"*"} text={"x"} />
-      </div>
+      </div> */}
 
       <div className="fifth-row">
         <Button onClick={resetCalculator} text={"Reset"} />
