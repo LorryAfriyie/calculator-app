@@ -12,7 +12,7 @@ export function Button({ onClick, text, value }: ButtonProps) {
   const btnText = useRef<HTMLParagraphElement | null>(null),
     btn = useRef<HTMLButtonElement | null>(null);
 
-  const i = typeof value;
+  const valueType = typeof value;
 
   useEffect(() => {
     function BtnColorSwitch(theme: string) {
@@ -35,20 +35,21 @@ export function Button({ onClick, text, value }: ButtonProps) {
     }
 
     function BtnColors(btnTextColor: string, btnColor: string) {
-      btnText.current!.style.color = btnTextColor;
-      if (i === "number") btn.current!.style.backgroundColor = btnColor;
-      if (i === "string" && value != "=")
+      // btnText.current!.style.color = btnTextColor;
+
+      if (valueType === "number") btn.current!.style.backgroundColor = btnColor;
+      if (valueType === "string" && value != "=")
         btn.current!.style.backgroundColor = btnColor;
     }
 
-    function activeColor() {
+    /*  function activeColor() {
       btnText.current!.style.color = "var(--clr-th1-very-dark-grayish-blue)";
     }
 
-    // activeColor();
+    if (theme === "") activeColor(); */
 
     BtnColorSwitch(theme);
-  }, [theme, value, text, i]);
+  }, [theme, value, text, valueType]);
 
   return (
     <button onClick={onClick} value={value} ref={btn}>
