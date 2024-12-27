@@ -9,8 +9,7 @@ type ButtonProps = {
 
 export function Button({ onClick, text, value }: ButtonProps) {
   const { theme } = useThemeContext();
-  const btnText = useRef<HTMLParagraphElement | null>(null),
-    btn = useRef<HTMLButtonElement | null>(null);
+  const btn = useRef<HTMLButtonElement | null>(null);
 
   const valueType = typeof value;
 
@@ -35,18 +34,18 @@ export function Button({ onClick, text, value }: ButtonProps) {
     }
 
     function BtnColors(btnTextColor: string, btnColor: string) {
-      // btnText.current!.style.color = btnTextColor;
+      btn.current!.style.color = btnTextColor;
 
       if (valueType === "number") btn.current!.style.backgroundColor = btnColor;
       if (valueType === "string" && value != "=")
         btn.current!.style.backgroundColor = btnColor;
     }
 
-    /*  function activeColor() {
-      btnText.current!.style.color = "var(--clr-th1-very-dark-grayish-blue)";
+    function activeColor() {
+      btn.current!.style.color = "var(--clr-th1-very-dark-grayish-blue)";
     }
 
-    if (theme === "") activeColor(); */
+    if (theme === "") activeColor();
 
     BtnColorSwitch(theme);
   }, [theme, value, text, valueType]);
