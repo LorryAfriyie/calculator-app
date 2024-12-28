@@ -47,6 +47,21 @@ export function Button({ onClick, text, value }: ButtonProps) {
 
     if (theme === "") activeColor();
 
+    if (text === "del") {
+      btn.current!.style.color = "var(--clr-white)";
+      btn.current!.style.backgroundColor = "var(--clr-th1-key-bg-ddb)";
+    }
+
+    if (text === "=") {
+      btn.current!.style.color = "var(--clr-white)";
+      btn.current!.style.backgroundColor = "var(--clr-th1-key-and-toggle-bg-r)";
+    }
+
+    if (text === "Reset") {
+      btn.current!.style.color = "var(--clr-white)";
+      btn.current!.style.backgroundColor = "var(--clr-th1-key-bg-ddb)";
+    }
+
     BtnColorSwitch(theme);
   }, [theme, value, text, valueType]);
 
