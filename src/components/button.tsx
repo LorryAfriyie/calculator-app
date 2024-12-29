@@ -18,15 +18,30 @@ export function Button({ onClick, text, value }: ButtonProps) {
       switch (theme) {
         case "one":
           BtnColors("var(--clr-th1-key-bg-ddb)", "var(--clr-th1-key-bg-lgo");
+          NonNumericBtnStyle(
+            text,
+            "var(--clr-white)",
+            "var(--clr-th1-key-bg-ddb)"
+          );
           break;
         case "two":
           BtnColors(
             "var(--clr-th2-very-dark-grayish-yellow)",
             "var(--clr-th2-key-bg-lgy)"
           );
+          NonNumericBtnStyle(
+            text,
+            "var(--clr-th2-key-bg-dmc)",
+            "var(--clr-th2-key-and-toggle-bg-o)"
+          );
           break;
         case "three":
           BtnColors("var(--clr-th3-light-yellow)", "var(--clr-th3-key-bg-vdv)");
+          NonNumericBtnStyle(
+            text,
+            "var(--clr-th3-key-bg-dv)",
+            "var(--clr-th3-key-and-toggle-bg-pc)"
+          );
           break;
         default:
           break;
@@ -47,19 +62,21 @@ export function Button({ onClick, text, value }: ButtonProps) {
 
     if (theme === "") activeColor();
 
-    if (text === "del") {
-      btn.current!.style.color = "var(--clr-white)";
-      btn.current!.style.backgroundColor = "var(--clr-th1-key-bg-ddb)";
-    }
+    function NonNumericBtnStyle(text: string, color1: string, color2: string) {
+      if (text === "del") {
+        btn.current!.style.color = color1;
+        btn.current!.style.backgroundColor = color2;
+      }
 
-    if (text === "=") {
-      btn.current!.style.color = "var(--clr-white)";
-      btn.current!.style.backgroundColor = "var(--clr-th1-key-and-toggle-bg-r)";
-    }
+      if (text === "=") {
+        btn.current!.style.color = color1;
+        btn.current!.style.backgroundColor = color2;
+      }
 
-    if (text === "Reset") {
-      btn.current!.style.color = "var(--clr-white)";
-      btn.current!.style.backgroundColor = "var(--clr-th1-key-bg-ddb)";
+      if (text === "Reset") {
+        btn.current!.style.color = color1;
+        btn.current!.style.backgroundColor = color2;
+      }
     }
 
     BtnColorSwitch(theme);
