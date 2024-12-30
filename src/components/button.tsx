@@ -21,7 +21,8 @@ export function Button({ onClick, text, value }: ButtonProps) {
           NonNumericBtnStyle(
             text,
             "var(--clr-white)",
-            "var(--clr-th1-key-bg-ddb)"
+            "var(--clr-th1-key-bg-ddb)",
+            "var(--clr-th1-key-and-toggle-bg-r)"
           );
           break;
         case "two":
@@ -31,6 +32,7 @@ export function Button({ onClick, text, value }: ButtonProps) {
           );
           NonNumericBtnStyle(
             text,
+            "var(--clr-white)",
             "var(--clr-th2-key-bg-dmc)",
             "var(--clr-th2-key-and-toggle-bg-o)"
           );
@@ -39,6 +41,7 @@ export function Button({ onClick, text, value }: ButtonProps) {
           BtnColors("var(--clr-th3-light-yellow)", "var(--clr-th3-key-bg-vdv)");
           NonNumericBtnStyle(
             text,
+            "var(--clr-white)",
             "var(--clr-th3-key-bg-dv)",
             "var(--clr-th3-key-and-toggle-bg-pc)"
           );
@@ -58,19 +61,32 @@ export function Button({ onClick, text, value }: ButtonProps) {
 
     function activeColor() {
       btn.current!.style.color = "var(--clr-th1-very-dark-grayish-blue)";
+      NonNumericBtnStyle(
+        text,
+        "var(--clr-white)",
+        "var(--clr-th1-key-bg-ddb)",
+        "var(--clr-th1-key-and-toggle-bg-r)"
+      );
     }
 
     if (theme === "") activeColor();
 
-    function NonNumericBtnStyle(text: string, color1: string, color2: string) {
+    function NonNumericBtnStyle(
+      text: string,
+      color1: string,
+      color2: string,
+      equalBtnColor: string
+    ) {
       if (text === "del") {
         btn.current!.style.color = color1;
         btn.current!.style.backgroundColor = color2;
       }
 
       if (text === "=") {
-        btn.current!.style.color = color1;
-        btn.current!.style.backgroundColor = color2;
+        if (theme === "three")
+          btn.current!.style.color = "var(--clr-very-dark-blue)";
+        else btn.current!.style.color = color1;
+        btn.current!.style.backgroundColor = equalBtnColor;
       }
 
       if (text === "Reset") {
