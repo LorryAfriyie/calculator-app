@@ -11,9 +11,11 @@ export function Button({ onClick, text, value }: ButtonProps) {
   const { theme } = useThemeContext();
   const btn = useRef<HTMLButtonElement | null>(null);
 
+  // Variable to hold the value type of the different buttons of the calculator
   const valueType = typeof value;
 
   useEffect(() => {
+    // Function holding a switch statement to switch between selected theme colors
     function BtnColorSwitch(theme: string) {
       switch (theme) {
         case "one":
@@ -51,6 +53,7 @@ export function Button({ onClick, text, value }: ButtonProps) {
       }
     }
 
+    // Function to add theme colors to the button background and text color
     function BtnColors(btnTextColor: string, btnColor: string) {
       btn.current!.style.color = btnTextColor;
 
@@ -59,6 +62,7 @@ export function Button({ onClick, text, value }: ButtonProps) {
         btn.current!.style.backgroundColor = btnColor;
     }
 
+    // Function to set default theme
     function activeColor() {
       btn.current!.style.color = "var(--clr-th1-very-dark-grayish-blue)";
       NonNumericBtnStyle(
@@ -69,8 +73,10 @@ export function Button({ onClick, text, value }: ButtonProps) {
       );
     }
 
+    // Set theme when theme useState is empty
     if (theme === "") activeColor();
 
+    // Adding separate styles to the non numeric buttons of the calculator
     function NonNumericBtnStyle(
       text: string,
       color1: string,

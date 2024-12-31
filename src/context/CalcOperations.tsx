@@ -94,6 +94,7 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     });
   }
 
+  // Hold the type of math operator selected and also return the result of entered values
   function signHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     const mathSign = (e.target as HTMLButtonElement).value;
@@ -110,6 +111,7 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     });
   }
 
+  // Return the result of the values entered into the calculator
   function equalHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
 
@@ -126,6 +128,7 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     }
   }
 
+  // Do calculation based on the type of math operation selected
   const calculation = (a: number, b: number, sign: string) => {
     switch (sign) {
       case "+":

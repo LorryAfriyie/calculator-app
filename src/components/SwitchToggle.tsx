@@ -52,6 +52,7 @@ export function ToggleSwitch() {
       }
     }
 
+    // Function to set theme colors for the body, logo and the toggle switch
     function Colors(
       bodyColor: string,
       labelColor: string,

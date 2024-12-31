@@ -18,6 +18,7 @@ export function ButtonSection() {
   const btnBg = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // Function holding a switch statement to change the color of the button wrapper based on the selected theme
     function BgSwitch(theme: string) {
       switch (theme) {
         case "one":
@@ -37,6 +38,7 @@ export function ButtonSection() {
       }
     }
 
+    // Function to set the default theme color
     function active() {
       btnBg.current!.style.backgroundColor = "var(--clr-th1-toggle-and-key-bg)";
     }
@@ -45,6 +47,7 @@ export function ButtonSection() {
     BgSwitch(theme);
   }, [theme]);
 
+  // Array of objects for button's data
   const button = [
     { value: 7, text: "7", method: buttonValue },
     { value: 8, text: "8", method: buttonValue },

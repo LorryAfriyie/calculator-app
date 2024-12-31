@@ -33,6 +33,7 @@ export function ScreenSection() {
       }
     }
 
+    // Function to change the styling of the calculator screen based on the selected theme
     function ScreenColors(screenBackground: string, textColor: string) {
       screen.current!.style.backgroundColor = screenBackground;
       text.current!.style.color = textColor;
