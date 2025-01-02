@@ -5,11 +5,27 @@ type ButtonProps = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   text: string;
   value?: number | string;
+  btnClass?: string;
 };
 
-export function Button({ onClick, text, value }: ButtonProps) {
+export function Button({ onClick, text, value, btnClass }: ButtonProps) {
   const { theme } = useThemeContext();
   const btn = useRef<HTMLButtonElement | null>(null);
+
+  // Numeric buttons
+  const buttonTheme1 = "theme-one-btn-style",
+    buttonTheme2 = "theme-two-btn-style",
+    buttonTheme3 = "theme-three-btn-style";
+
+  // Delete button
+  const delTheme1 = "del-theme-one",
+    delTheme2 = "del-theme-two",
+    delTheme3 = "del-theme-three";
+
+  // Reset Button
+  const resetTheme1 = "reset-theme-one",
+    resetTheme2 = "reset-theme-two",
+    resetTheme3 = "reset-theme-three";
 
   // Variable to hold the value type of the different buttons of the calculator
   const valueType = typeof value;
@@ -19,11 +35,14 @@ export function Button({ onClick, text, value }: ButtonProps) {
     function BtnColorSwitch(theme: string) {
       switch (theme) {
         case "one":
-          BtnColors(
-            "var(--clr-th1-key-bg-ddb)",
-            "var(--clr-th1-key-bg-lgo",
-            "var(--clr-th1-key-sh-go)"
-          );
+          if (CheckClassName(buttonTheme2)) {
+            RemoveClass(buttonTheme2);
+            AddClass(buttonTheme1);
+          } else if (CheckClassName(buttonTheme3)) {
+            RemoveClass(buttonTheme3);
+            AddClass(buttonTheme1);
+          } else AddClass(buttonTheme1);
+
           NonNumericBtnStyle(
             text,
             "var(--clr-white)",
@@ -34,11 +53,14 @@ export function Button({ onClick, text, value }: ButtonProps) {
           );
           break;
         case "two":
-          BtnColors(
-            "var(--clr-th2-very-dark-grayish-yellow)",
-            "var(--clr-th2-key-bg-lgy)",
-            "var(--clr-th2-key-sh-dgo)"
-          );
+          if (CheckClassName(buttonTheme1)) {
+            RemoveClass(buttonTheme1);
+            AddClass(buttonTheme2);
+          } else if (CheckClassName(buttonTheme3)) {
+            RemoveClass(buttonTheme3);
+            AddClass(buttonTheme2);
+          } else AddClass(buttonTheme2);
+
           NonNumericBtnStyle(
             text,
             "var(--clr-white)",
@@ -49,11 +71,14 @@ export function Button({ onClick, text, value }: ButtonProps) {
           );
           break;
         case "three":
-          BtnColors(
-            "var(--clr-th3-light-yellow)",
-            "var(--clr-th3-key-bg-vdv)",
-            "var(--clr-th3-key-sh-dm)"
-          );
+          if (CheckClassName(buttonTheme1)) {
+            RemoveClass(buttonTheme1);
+            AddClass(buttonTheme3);
+          } else if (CheckClassName(buttonTheme2)) {
+            RemoveClass(buttonTheme2);
+            AddClass(buttonTheme3);
+          } else AddClass(buttonTheme3);
+
           NonNumericBtnStyle(
             text,
             "var(--clr-white)",
@@ -68,26 +93,9 @@ export function Button({ onClick, text, value }: ButtonProps) {
       }
     }
 
-    // Function to add theme colors to the button background and text color
-    function BtnColors(btnTextColor: string, btnColor: string, shadow: string) {
-      btn.current!.style.color = btnTextColor;
-
-      if (valueType === "number") {
-        btn.current!.style.backgroundColor = btnColor;
-        btn.current!.style.boxShadow = "0px 3px 0px 0px " + shadow;
-      }
-      if (valueType === "string" && value != "=" && value != "") {
-        btn.current!.style.backgroundColor = btnColor;
-        btn.current!.style.boxShadow = "0px 3px 0px 0px " + shadow;
-      }
-    }
-
     // Function to set default theme
     function activeColor() {
-      btn.current!.style.color = "var(--clr-th1-very-dark-grayish-blue)";
-
-      if (valueType === "number")
-        btn.current!.style.boxShadow = "0 3px 0 0 var(--clr-th1-key-sh-go)";
+      AddClass(buttonTheme1);
 
       if (valueType === "string" && value != "=" && value != "")
         btn.current!.style.boxShadow = "0 3px 0 0 var(--clr-th1-key-sh-go)";
@@ -96,7 +104,9 @@ export function Button({ onClick, text, value }: ButtonProps) {
         text,
         "var(--clr-white)",
         "var(--clr-th1-key-bg-ddb)",
-        "var(--clr-th1-key-and-toggle-bg-r)"
+        "var(--clr-th1-key-and-toggle-bg-r)",
+        "var(--clr-th1-key-sh-ddb)",
+        "var(--clr-th1-key-bg-dr)"
       );
     }
 
@@ -133,11 +143,23 @@ export function Button({ onClick, text, value }: ButtonProps) {
       }
     }
 
+    function CheckClassName(className: string) {
+      return btn.current!.classList.contains(className) ? true : false;
+    }
+
+    function AddClass(className: string) {
+      btn.current!.classList.add(className);
+    }
+
+    function RemoveClass(className: string) {
+      btn.current!.classList.remove(className);
+    }
+
     BtnColorSwitch(theme);
   }, [theme, value, text, valueType]);
 
   return (
-    <button onClick={onClick} value={value} ref={btn}>
+    <button onClick={onClick} value={value} ref={btn} className={btnClass}>
       {text}
     </button>
   );
