@@ -49,22 +49,22 @@ export function ButtonSection() {
 
   // Array of objects for button's data
   const button = [
-    { value: 7, text: "7", method: buttonValue, class: "numeric" },
-    { value: 8, text: "8", method: buttonValue, class: "numeric" },
-    { value: 9, text: "9", method: buttonValue, class: "numeric" },
-    { value: "", text: "del", method: deleteValue, class: "del" },
-    { value: 4, text: "4", method: buttonValue, class: "numeric" },
-    { value: 5, text: "5", method: buttonValue, class: "numeric" },
-    { value: 6, text: "6", method: buttonValue, class: "numeric" },
-    { value: "+", text: "+", method: signHandler, class: "math-operator" },
-    { value: 1, text: "1", method: buttonValue, class: "numeric" },
-    { value: 2, text: "2", method: buttonValue, class: "numeric" },
-    { value: 3, text: "3", method: buttonValue, class: "numeric" },
-    { value: "-", text: "-", method: signHandler, class: "math-operator" },
-    { value: ".", text: ".", method: commaHandler, class: "comma" },
-    { value: 0, text: "0", method: buttonValue, class: "numeric" },
-    { value: "/", text: "/", method: signHandler, class: "math-operator" },
-    { value: "*", text: "*", method: signHandler, class: "math-operator" },
+    { value: 7, text: "7", method: buttonValue },
+    { value: 8, text: "8", method: buttonValue },
+    { value: 9, text: "9", method: buttonValue },
+    { value: "", text: "del", method: deleteValue },
+    { value: 4, text: "4", method: buttonValue },
+    { value: 5, text: "5", method: buttonValue },
+    { value: 6, text: "6", method: buttonValue },
+    { value: "+", text: "+", method: signHandler },
+    { value: 1, text: "1", method: buttonValue },
+    { value: 2, text: "2", method: buttonValue },
+    { value: 3, text: "3", method: buttonValue },
+    { value: "-", text: "-", method: signHandler },
+    { value: ".", text: ".", method: commaHandler },
+    { value: 0, text: "0", method: buttonValue },
+    { value: "/", text: "/", method: signHandler },
+    { value: "*", text: "*", method: signHandler },
   ];
 
   return (
@@ -77,7 +77,6 @@ export function ButtonSection() {
                 onClick={x.method}
                 value={x.value}
                 text={x.text}
-                btnClass={x.class}
               />
             </div>
           );

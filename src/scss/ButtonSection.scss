@@ -37,11 +37,15 @@
     }
   }
 
-  // Numeric Button Theme Styles
+  // Numeric Button Theme Styles and hover effect
   .theme-one-btn-style {
     background-color: var(--clr-th1-key-bg-lgo);
     color: var(--clr-th1-key-bg-ddb);
     box-shadow: 0 3px 0 0 var(--clr-th1-key-sh-go);
+  }
+
+  .theme-one-btn-style:hover {
+    background-color: hsl(0, 0%, 100%);
   }
 
   .theme-two-btn-style {
@@ -56,7 +60,7 @@
     box-shadow: 0 3px 0 0 var(--clr-th3-key-sh-dm);
   }
 
-  // Delete and Reset button theme styles
+  // Delete and Reset button theme styles and hover effect
   .del-theme-one,
   .reset-theme-one {
     background-color: var(--clr-th1-key-bg-ddb);
@@ -64,36 +68,45 @@
     box-shadow: 0 3px 0 0 var(--clr-th1-key-sh-ddb);
   }
 
+  .del-theme-one:hover,
+  .reset-theme-one:hover {
+    background-color: hsl(224, 28%, 73%);
+  }
+
   .del-theme-two,
   .reset-theme-two {
-    background-color: var();
-    color: var();
-    box-shadow: 0 3px 0 0;
+    background-color: var(--clr-th2-key-bg-dmc);
+    color: var(--clr-white);
+    box-shadow: 0 3px 0 0 var(--clr-th2-key-sh-vdy);
   }
 
   .del-theme-three,
   .reset-theme-three {
-    background-color: var();
-    color: var();
-    box-shadow: 0 3px 0 0;
+    background-color: var(--clr-th3-key-bg-dv);
+    color: var(--clr-white);
+    box-shadow: 0 3px 0 0 var(--clr-th3-key-sh-vm);
   }
 
-  // Equal sign button theme styles
+  // Equal sign button theme styles and hover effect
   .equal-sign-theme-one {
-    background-color: var();
-    color: var();
-    box-shadow: 0 3px 0 0;
+    background-color: var(--clr-th1-key-and-toggle-bg-r);
+    color: var(--clr-white);
+    box-shadow: 0 3px 0 0 var(--clr-th1-key-bg-dr);
+  }
+
+  .equal-sign-theme-one:hover {
+    background-color: hsl(6, 63%, 64%);
   }
 
   .equal-sign-theme-two {
-    background-color: var();
-    color: var();
-    box-shadow: 0 3px 0 0;
+    background-color: var(--clr-th2-key-and-toggle-bg-o);
+    color: var(--clr-white);
+    box-shadow: 0 3px 0 0 var(--clr-th2-key-sh-do);
   }
 
   .equal-sign-theme-three {
-    background-color: var();
-    color: var();
-    box-shadow: 0 3px 0 0;
+    background-color: var(--clr-th3-key-and-toggle-bg-pc);
+    color: var(--clr-very-dark-blue);
+    box-shadow: 0 3px 0 0 var(--clr-th3-key-sh-sc);
   }
 }
