@@ -7,11 +7,12 @@
     border-radius: 7px;
     border: none;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     outline: none;
     cursor: pointer;
     padding: 0.65rem;
     text-transform: uppercase;
+    text-align: center;
   }
 
   .four-row-btn {
@@ -54,10 +55,18 @@
     box-shadow: 0 3px 0 0 var(--clr-th2-key-sh-dgo);
   }
 
+  .theme-two-btn-style:hover {
+    background-color: hsl(0, 0%, 100%);
+  }
+
   .theme-three-btn-style {
     background-color: var(--clr-th3-key-bg-vdv);
     color: var(--clr-th3-light-yellow);
     box-shadow: 0 3px 0 0 var(--clr-th3-key-sh-dm);
+  }
+
+  .theme-three-btn-style:hover {
+    background-color: hsl(267, 70%, 34%);
   }
 
   // Delete and Reset button theme styles and hover effect
@@ -80,11 +89,21 @@
     box-shadow: 0 3px 0 0 var(--clr-th2-key-sh-vdy);
   }
 
+  .del-theme-two:hover,
+  .reset-theme-two:hover {
+    background-color: hsl(185, 48%, 69%);
+  }
+
   .del-theme-three,
   .reset-theme-three {
     background-color: var(--clr-th3-key-bg-dv);
     color: var(--clr-white);
     box-shadow: 0 3px 0 0 var(--clr-th3-key-sh-vm);
+  }
+
+  .del-theme-three:hover,
+  .reset-theme-three:hover {
+    background-color: hsl(277, 71%, 38%);
   }
 
   // Equal sign button theme styles and hover effect
@@ -104,9 +123,17 @@
     box-shadow: 0 3px 0 0 var(--clr-th2-key-sh-do);
   }
 
+  .equal-sign-theme-two:hover {
+    background-color: hsl(25, 78%, 70%);
+  }
+
   .equal-sign-theme-three {
     background-color: var(--clr-th3-key-and-toggle-bg-pc);
     color: var(--clr-very-dark-blue);
     box-shadow: 0 3px 0 0 var(--clr-th3-key-sh-sc);
+  }
+
+  .equal-sign-theme-three:hover {
+    background-color: hsl(177, 42%, 93%);
   }
 }
