@@ -64,7 +64,7 @@ export function ButtonSection() {
     { value: ".", text: ".", method: commaHandler },
     { value: 0, text: "0", method: buttonValue },
     { value: "/", text: "/", method: signHandler },
-    { value: "*", text: "*", method: signHandler },
+    { value: "*", text: "x", method: signHandler },
   ];
 
   return (
@@ -73,11 +73,7 @@ export function ButtonSection() {
         {button.map((x, index) => {
           return (
             <div key={index}>
-              <Button
-                onClick={x.method}
-                value={x.value}
-                text={x.text}
-              />
+              <Button onClick={x.method} value={x.value} text={x.text} />
             </div>
           );
         })}

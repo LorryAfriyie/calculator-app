@@ -11,7 +11,6 @@
     outline: none;
     cursor: pointer;
     padding: 0.65rem;
-    text-transform: uppercase;
     text-align: center;
   }
 
@@ -71,9 +70,19 @@
 
   // Delete and Reset button theme styles and hover effect
   .del-theme-one,
+  .del-theme-two,
+  .del-theme-three,
+  .reset-theme-one,
+  .reset-theme-two,
+  .reset-theme-three {
+    text-transform: uppercase;
+    color: var(--clr-white);
+  }
+
+  .del-theme-one,
   .reset-theme-one {
     background-color: var(--clr-th1-key-bg-ddb);
-    color: var(--clr-white);
+
     box-shadow: 0 3px 0 0 var(--clr-th1-key-sh-ddb);
   }
 
@@ -85,7 +94,7 @@
   .del-theme-two,
   .reset-theme-two {
     background-color: var(--clr-th2-key-bg-dmc);
-    color: var(--clr-white);
+
     box-shadow: 0 3px 0 0 var(--clr-th2-key-sh-vdy);
   }
 
@@ -97,7 +106,7 @@
   .del-theme-three,
   .reset-theme-three {
     background-color: var(--clr-th3-key-bg-dv);
-    color: var(--clr-white);
+
     box-shadow: 0 3px 0 0 var(--clr-th3-key-sh-vm);
   }
 
