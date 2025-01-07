@@ -5,13 +5,14 @@ import React, {
   SetStateAction,
   useContext,
   useState,
+  useEffect,
 } from "react";
 
 type CalcOperationContext = {
   calc: {
     sign: string;
     num: number | string;
-    res?: number;
+    res?: number | string;
   };
   setCalc: Dispatch<SetStateAction<CalcType>>;
   buttonValue: (value: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -29,7 +30,7 @@ type CalcOperationContext = {
 interface CalcType {
   sign: string;
   num: number | string;
-  res?: number;
+  res?: number | string;
 }
 
 type CalcOperations = {
@@ -53,7 +54,7 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     const value = (e.target as HTMLButtonElement).value;
-    
+
     if (calc.num.toString().length < 16) {
       setCalc({
         ...calc,
@@ -80,6 +81,7 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     setCalc({
       ...calc,
       num: calc.num.toString().slice(0, -1),
+      res: calc.res!.toString().slice(0, -1),
     });
   }
 
@@ -90,7 +92,9 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
 
     setCalc({
       ...calc,
-      num: !calc.num.toString().includes(".") ? calc.num + comma : calc.num,
+      num: !calc.num.toString().includes(".")
+        ? calc.num + comma
+        : Number(calc.num),
     });
   }
 
@@ -103,7 +107,7 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
       ...calc,
       sign: mathSign,
       res: !Number(calc.num)
-        ? calc.res
+        ? Number(calc.res)
         : !Number(calc.res)
         ? Number(calc.num)
         : calculation(Number(calc.res), Number(calc.num), calc.sign),
@@ -151,6 +155,13 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   function removeSpaces(num: number | string) {
     return num.toString().replace(/\s/g, "");
   }
+
+  useEffect(() => {
+    // Set the values to zero when the states are empty
+    if (calc.num === "" && calc.res === "") {
+      setCalc({ num: 0, res: 0, sign: "" });
+    }
+  }, [calc]);
 
   return (
     <CalcOperationsContext.Provider
