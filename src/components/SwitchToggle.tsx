@@ -10,6 +10,9 @@ export function ToggleSwitch() {
     themeLabel = useRef<HTMLParagraphElement | null>(null),
     toggleSwitch = useRef<HTMLDivElement>(null);
 
+  const test = useRef<(HTMLElement | null)[]>([]),
+    checkmark = useRef<(HTMLSpanElement | null)[]>([]);
+
   useEffect(() => {
     // Function that encapsulates background theme colors and switches based on chosen theme
     function themeSwitch(calTheme: string) {
@@ -20,6 +23,15 @@ export function ToggleSwitch() {
             "var(--clr-th1-key-bg-lgo)",
             "var(--clr-th1-toggle-and-key-bg)"
           );
+
+          if (CheckColor("toggle-theme-two")) {
+            RemoveThemeNumberColor("toggle-theme-two");
+            ThemeNumberColor("toggle-theme-one");
+          } else if (CheckColor("toggle-theme-three")) {
+            RemoveThemeNumberColor("toggle-theme-three");
+            ThemeNumberColor("toggle-theme-one");
+          } else ThemeNumberColor("toggle-theme-one");
+
           break;
         case "two":
           Colors(
@@ -27,6 +39,15 @@ export function ToggleSwitch() {
             "var(--clr-th2-very-dark-grayish-yellow)",
             "var(--clr-th2-toggle-and-key-bg-gr)"
           );
+
+          if (CheckColor("toggle-theme-one")) {
+            RemoveThemeNumberColor("toggle-theme-one");
+            ThemeNumberColor("toggle-theme-two");
+          } else if (CheckColor("toggle-theme-three")) {
+            RemoveThemeNumberColor("toggle-theme-three");
+            ThemeNumberColor("toggle-theme-two");
+          } else ThemeNumberColor("toggle-theme-two");
+
           break;
         case "three":
           Colors(
@@ -34,6 +55,15 @@ export function ToggleSwitch() {
             "var(--clr-th3-light-yellow)",
             "var(--clr-th3-toggle-and-key-and-scrn-bg-vdv)"
           );
+
+          if (CheckColor("toggle-theme-one")) {
+            RemoveThemeNumberColor("toggle-theme-one");
+            ThemeNumberColor("toggle-theme-three");
+          } else if (CheckColor("toggle-theme-two")) {
+            RemoveThemeNumberColor("toggle-theme-two");
+            ThemeNumberColor("toggle-theme-three");
+          } else ThemeNumberColor("toggle-theme-three");
+
           break;
         default:
           break;
@@ -44,6 +74,9 @@ export function ToggleSwitch() {
     function active() {
       if (activeTheme.current != null) {
         activeTheme.current.checked = true;
+
+        ThemeNumberColor("toggle-theme-one");
+
         Colors(
           "var(--clr-th1-main-bg)",
           "var(--clr-th1-key-bg-lgo)",
@@ -61,6 +94,27 @@ export function ToggleSwitch() {
       document.body.style.backgroundColor = bodyColor;
       themeLabel.current!.style.color = labelColor;
       toggleSwitch.current!.style.backgroundColor = toggleBackground;
+    }
+
+    function ThemeNumberColor(themeClass: string) {
+      for (let i = 0; i < test.current.length; i++) {
+        test.current[i]!.classList.add(themeClass);
+      }
+    }
+
+    function RemoveThemeNumberColor(themeClass: string) {
+      for (let i = 0; i < test.current.length; i++) {
+        test.current[i]!.classList.remove(themeClass);
+      }
+    }
+
+    function CheckColor(themeClass: string) {
+      let isColor: boolean = false;
+
+      for (let i = 0; i < test.current.length; i++) {
+        if (test.current[i]!.classList.contains(themeClass)) isColor = true;
+      }
+      return isColor;
     }
 
     // Theme switch function
@@ -84,7 +138,7 @@ export function ToggleSwitch() {
       <div className={"toggle-switch__switch"} ref={toggleSwitch}>
         <label htmlFor="one" className="toggle-switch__theme-switcher">
           <div className="toggle-switch__theme-label">
-            <small>1</small>
+            <small ref={(e) => (test.current[0] = e)}>1</small>
           </div>
 
           <input
@@ -95,12 +149,15 @@ export function ToggleSwitch() {
             onChange={handleChange}
             ref={activeTheme}
           />
-          <span className="checkmark"></span>
+          <span
+            className="checkmark"
+            ref={(e) => (checkmark.current[0] = e)}
+          ></span>
         </label>
 
         <label htmlFor="two" className="toggle-switch__theme-switcher">
           <div className="toggle-switch__theme-label">
-            <small>2</small>
+            <small ref={(e) => (test.current[1] = e)}>2</small>
           </div>
 
           <input
@@ -110,12 +167,15 @@ export function ToggleSwitch() {
             value={"two"}
             onChange={handleChange}
           />
-          <span className="checkmark"></span>
+          <span
+            className="checkmark"
+            ref={(e) => (checkmark.current[1] = e)}
+          ></span>
         </label>
 
         <label htmlFor="three" className="toggle-switch__theme-switcher">
           <div className="toggle-switch__theme-label">
-            <small>3</small>
+            <small ref={(e) => (test.current[2] = e)}>3</small>
           </div>
 
           <input
@@ -125,7 +185,10 @@ export function ToggleSwitch() {
             value={"three"}
             onChange={handleChange}
           />
-          <span className="checkmark"></span>
+          <span
+            className="checkmark"
+            ref={(e) => (checkmark.current[2] = e)}
+          ></span>
         </label>
       </div>
     </div>

@@ -82,7 +82,7 @@ export function Button({ onClick, text, value }: ButtonProps) {
     if (theme === "") activeColor();
 
     function CheckClassName(className: string) {
-      return btn.current!.classList.contains(className) ? true : false;
+      return btn.current!.classList.contains(className);
     }
 
     function AddClass(

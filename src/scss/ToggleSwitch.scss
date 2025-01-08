@@ -18,6 +18,7 @@
     border-radius: 12px;
     width: 65px;
     height: 25px;
+    position: relative;
   }
 
   &__theme-switcher {
@@ -50,6 +51,20 @@
 
   &__theme-label {
     position: absolute;
-    //top: 25px;
+    bottom: 30px;
+    font-weight: 600;
+
+    //  Toggle switch
+    .toggle-theme-one {
+      color: var(--clr-th1-key-and-toggle-bg-r);
+    }
+
+    .toggle-theme-two {
+      color: var(--clr-th2-key-and-toggle-bg-o);
+    }
+
+    .toggle-theme-three {
+      color: var(--clr-th3-key-and-toggle-bg-pc);
+    }
   }
 }
