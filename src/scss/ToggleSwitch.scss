@@ -41,6 +41,32 @@
       display: inline-block;
       opacity: 0;
       transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    //  Toggle switch theme styles
+    .toggle-theme-one {
+      background-color: var(--clr-th1-key-and-toggle-bg-r);
+    }
+
+    .toggle-theme-one:hover {
+      background-color: hsl(6, 63%, 64%);
+    }
+
+    .toggle-theme-two {
+      background-color: var(--clr-th2-key-and-toggle-bg-o);
+    }
+
+    .toggle-theme-two:hover {
+      background-color: hsl(25, 78%, 70%);
+    }
+
+    .toggle-theme-three {
+      background-color: var(--clr-th3-key-and-toggle-bg-pc);
+    }
+
+    .toggle-theme-three:hover {
+      background-color: hsl(177, 42%, 93%);
     }
 
     input:checked + .checkmark {
@@ -54,17 +80,16 @@
     bottom: 30px;
     font-weight: 600;
 
-    //  Toggle switch
-    .toggle-theme-one {
-      color: var(--clr-th1-key-and-toggle-bg-r);
+    .label-theme-color-one {
+      color: var(--clr-th1-key-bg-lgo);
     }
 
-    .toggle-theme-two {
-      color: var(--clr-th2-key-and-toggle-bg-o);
+    .label-theme-color-two {
+      color: var(--clr-th2-very-dark-grayish-yellow);
     }
 
-    .toggle-theme-three {
-      color: var(--clr-th3-key-and-toggle-bg-pc);
+    .label-theme-color-three {
+      color: var(--clr-th3-light-yellow);
     }
   }
 }

@@ -24,13 +24,18 @@ export function ToggleSwitch() {
             "var(--clr-th1-toggle-and-key-bg)"
           );
 
-          if (CheckColor("toggle-theme-two")) {
-            RemoveThemeNumberColor("toggle-theme-two");
-            ThemeNumberColor("toggle-theme-one");
-          } else if (CheckColor("toggle-theme-three")) {
-            RemoveThemeNumberColor("toggle-theme-three");
-            ThemeNumberColor("toggle-theme-one");
-          } else ThemeNumberColor("toggle-theme-one");
+          if (CheckColor("label-theme-color-two", "toggle-theme-two")) {
+            RemoveThemeNumberColor("label-theme-color-two", "toggle-theme-two");
+            ThemeNumberColor("label-theme-color-one", "toggle-theme-one");
+          } else if (
+            CheckColor("label-theme-color-three", "toggle-theme-three")
+          ) {
+            RemoveThemeNumberColor(
+              "label-theme-color-three",
+              "toggle-theme-three"
+            );
+            ThemeNumberColor("label-theme-color-one", "toggle-theme-one");
+          } else ThemeNumberColor("label-theme-color-one", "toggle-theme-one");
 
           break;
         case "two":
@@ -40,13 +45,18 @@ export function ToggleSwitch() {
             "var(--clr-th2-toggle-and-key-bg-gr)"
           );
 
-          if (CheckColor("toggle-theme-one")) {
-            RemoveThemeNumberColor("toggle-theme-one");
-            ThemeNumberColor("toggle-theme-two");
-          } else if (CheckColor("toggle-theme-three")) {
-            RemoveThemeNumberColor("toggle-theme-three");
-            ThemeNumberColor("toggle-theme-two");
-          } else ThemeNumberColor("toggle-theme-two");
+          if (CheckColor("label-theme-color-one", "toggle-theme-one")) {
+            RemoveThemeNumberColor("label-theme-color-one", "toggle-theme-one");
+            ThemeNumberColor("label-theme-color-two", "toggle-theme-two");
+          } else if (
+            CheckColor("label-theme-color-three", "toggle-theme-three")
+          ) {
+            RemoveThemeNumberColor(
+              "label-theme-color-three",
+              "toggle-theme-three"
+            );
+            ThemeNumberColor("label-theme-color-two", "toggle-theme-two");
+          } else ThemeNumberColor("label-theme-color-two", "toggle-theme-two");
 
           break;
         case "three":
@@ -56,13 +66,14 @@ export function ToggleSwitch() {
             "var(--clr-th3-toggle-and-key-and-scrn-bg-vdv)"
           );
 
-          if (CheckColor("toggle-theme-one")) {
-            RemoveThemeNumberColor("toggle-theme-one");
-            ThemeNumberColor("toggle-theme-three");
-          } else if (CheckColor("toggle-theme-two")) {
-            RemoveThemeNumberColor("toggle-theme-two");
-            ThemeNumberColor("toggle-theme-three");
-          } else ThemeNumberColor("toggle-theme-three");
+          if (CheckColor("label-theme-color-one", "toggle-theme-one")) {
+            RemoveThemeNumberColor("label-theme-color-one", "toggle-theme-one");
+            ThemeNumberColor("label-theme-color-three", "toggle-theme-three");
+          } else if (CheckColor("label-theme-color-two", "toggle-theme-two")) {
+            RemoveThemeNumberColor("label-theme-color-two", "toggle-theme-two");
+            ThemeNumberColor("label-theme-color-three", "toggle-theme-three");
+          } else
+            ThemeNumberColor("label-theme-color-three", "toggle-theme-three");
 
           break;
         default:
@@ -75,7 +86,7 @@ export function ToggleSwitch() {
       if (activeTheme.current != null) {
         activeTheme.current.checked = true;
 
-        ThemeNumberColor("toggle-theme-one");
+        ThemeNumberColor("label-theme-color-one", "toggle-theme-one");
 
         Colors(
           "var(--clr-th1-main-bg)",
@@ -96,23 +107,29 @@ export function ToggleSwitch() {
       toggleSwitch.current!.style.backgroundColor = toggleBackground;
     }
 
-    function ThemeNumberColor(themeClass: string) {
+    function ThemeNumberColor(themeClass: string, checkColor: string) {
       for (let i = 0; i < test.current.length; i++) {
         test.current[i]!.classList.add(themeClass);
+        checkmark.current[i]!.classList.add(checkColor);
       }
     }
 
-    function RemoveThemeNumberColor(themeClass: string) {
+    function RemoveThemeNumberColor(themeClass: string, checkColor: string) {
       for (let i = 0; i < test.current.length; i++) {
         test.current[i]!.classList.remove(themeClass);
+        checkmark.current[i]!.classList.remove(checkColor);
       }
     }
 
-    function CheckColor(themeClass: string) {
+    function CheckColor(themeClass: string, checkColor: string) {
       let isColor: boolean = false;
 
       for (let i = 0; i < test.current.length; i++) {
-        if (test.current[i]!.classList.contains(themeClass)) isColor = true;
+        if (
+          test.current[i]!.classList.contains(themeClass) &&
+          checkmark.current[i]!.classList.contains(checkColor)
+        )
+          isColor = true;
       }
       return isColor;
     }
