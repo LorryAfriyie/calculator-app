@@ -11,6 +11,10 @@ export function ScreenSection() {
   const screen = useRef<HTMLInputElement | null>(null),
     text = useRef<HTMLParagraphElement | null>(null);
 
+  function format(num: number | string) {
+    return Number(num).toLocaleString();
+  }
+
   useEffect(() => {
     // Function that encapsulates screen and text theme colors and switches based on chosen theme
     function themeSwitch(theme: string) {
