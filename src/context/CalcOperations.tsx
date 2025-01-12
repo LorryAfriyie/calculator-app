@@ -60,8 +60,8 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
         ...calc,
         num:
           Number(calc.num) % 1 === 0 && !calc.num.toString().includes(".")
-            ? Number(calc.num + value)
-            : Number(calc.num + value),
+            ? toLocaleString(Number(removeSpaces(calc.num + value)))
+            : toLocaleString(Number(calc.num + value)),
         res: !calc.sign ? 0 : calc.res,
       });
     }
@@ -148,8 +148,12 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     }
   };
 
-  function removeSpaces(num: number | string) {
-    return num.toString().replace(/\s/g, "");
+  function removeSpaces(value: string | number) {
+    return value.toString().replace(/,(?=\d{3})/g, "");
+  }
+
+  function toLocaleString(value: string | number) {
+    return String(value).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
   }
 
   useEffect(() => {
@@ -157,6 +161,8 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     if (calc.num === "" && calc.res === "") {
       setCalc({ num: 0, res: 0, sign: "" });
     }
+
+    if (calc.num) console.log(typeof calc.num + " " + calc.num);
   }, [calc]);
 
   return (
