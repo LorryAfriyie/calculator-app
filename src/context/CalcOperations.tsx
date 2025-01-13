@@ -55,13 +55,14 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     e.preventDefault();
     const value = (e.target as HTMLButtonElement).value;
 
-    if (calc.num.toString().length < 16) {
+    if (removeSpaces(calc.num).length < 16) {
       setCalc({
         ...calc,
         num:
-          Number(calc.num) % 1 === 0 && !calc.num.toString().includes(".")
+          Number(removeSpaces(calc.num)) % 1 === 0 &&
+          !calc.num.toString().includes(".")
             ? toLocaleString(Number(removeSpaces(calc.num + value)))
-            : toLocaleString(Number(calc.num + value)),
+            : toLocaleString(calc.num + value),
         res: !calc.sign ? 0 : calc.res,
       });
     }
@@ -106,11 +107,13 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     setCalc({
       ...calc,
       sign: mathSign,
-      res: !Number(calc.num)
-        ? Number(calc.res)
-        : !Number(calc.res)
-        ? Number(calc.num)
-        : calculation(Number(calc.res), Number(calc.num), calc.sign),
+      res: !calc.num
+        ? calc.res
+        : !calc.res
+        ? calc.num
+        : toLocaleString(
+            calculation(Number(calc.res), Number(calc.num), calc.sign)
+          ),
       num: 0,
     });
   }
@@ -125,7 +128,13 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
         res:
           calc.num === "0" && calc.sign === "/"
             ? 0
-            : calculation(Number(calc.res), Number(calc.num), calc.sign),
+            : toLocaleString(
+                calculation(
+                  Number(removeSpaces(calc.res)),
+                  Number(removeSpaces(calc.num)),
+                  calc.sign
+                )
+              ),
         sign: "",
         num: 0,
       });
@@ -136,6 +145,8 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   const calculation = (a: number, b: number, sign: string) => {
     switch (sign) {
       case "+":
+        console.log(`A: ${typeof a} ${a}`);
+        console.log(`B: ${typeof b} ${b}`);
         return a + b;
       case "-":
         return a - b;
@@ -148,13 +159,11 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     }
   };
 
-  function removeSpaces(value: string | number) {
-    return value.toString().replace(/,(?=\d{3})/g, "");
-  }
+  const removeSpaces = (value: string | number) =>
+    value.toString().replace(/\s/g, "");
 
-  function toLocaleString(value: string | number) {
-    return String(value).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
-  }
+  const toLocaleString = (value: string | number) =>
+    String(value).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
 
   useEffect(() => {
     // Set the values to zero when the states are empty
@@ -162,7 +171,11 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
       setCalc({ num: 0, res: 0, sign: "" });
     }
 
-    if (calc.num) console.log(typeof calc.num + " " + calc.num);
+    console.log(calc.res?.toString().length);
+
+    if (calc.res?.toString().length === 4)
+      setCalc({ res: Number(removeSpaces(calc.res)), sign: "", num: 0 });
+
   }, [calc]);
 
   return (
