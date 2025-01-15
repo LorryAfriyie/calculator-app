@@ -159,10 +159,10 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     }
   };
 
-  const removeSpaces = (value: string | number) =>
-    value.toString().replace(/\s/g, "");
+  const removeSpaces = (value?: string | number) =>
+    value!.toString().replace(/\s/g, "");
 
-  const toLocaleString = (value: string | number) =>
+  const toLocaleString = (value?: string | number) =>
     String(value).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
 
   useEffect(() => {
@@ -175,7 +175,6 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
 
     if (calc.res?.toString().length === 4)
       setCalc({ res: Number(removeSpaces(calc.res)), sign: "", num: 0 });
-
   }, [calc]);
 
   return (
