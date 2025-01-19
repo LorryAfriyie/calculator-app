@@ -50,6 +50,8 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     res: 0,
   });
 
+  const [isInitialRender, setIsInitialRender] = useState<boolean>(false);
+
   // Add values into number state object
   function buttonValue(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -145,8 +147,6 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   const calculation = (a: number, b: number, sign: string) => {
     switch (sign) {
       case "+":
-        console.log(`A: ${typeof a} ${a}`);
-        console.log(`B: ${typeof b} ${b}`);
         return a + b;
       case "-":
         return a - b;
@@ -160,22 +160,38 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   };
 
   const removeSpaces = (value?: string | number) =>
-    value!.toString().replace(/\s/g, "");
+    value!.toString().replace(/,/g, "");
 
   const toLocaleString = (value?: string | number) =>
-    String(value).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, "$1 ");
+    String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   useEffect(() => {
-    // Set the values to zero when the states are empty
-    if (calc.num === "" && calc.res === "") {
-      setCalc({ num: 0, res: 0, sign: "" });
+    if (isInitialRender) {
+      // Set the values to zero when the states are empty
+      if (calc.num === "" && calc.res === "") {
+        setCalc({ num: 0, res: 0, sign: "" });
+      }
+
+      if (calc.res?.toString().length === 4)
+        setCalc({ res: Number(removeSpaces(calc.res)), sign: "", num: 0 });
+
+      if (calc.res?.toString().length === 5)
+        setCalc({
+          res: toLocaleString(Number(removeSpaces(calc.res))),
+          sign: "",
+          num: 0,
+        });
+
+      if (calc.res?.toString().length === 6)
+        setCalc({
+          res: toLocaleString(Number(removeSpaces(calc.res))),
+          sign: "",
+          num: 0,
+        });
+
+      setIsInitialRender(false);
     }
-
-    console.log(calc.res?.toString().length);
-
-    if (calc.res?.toString().length === 4)
-      setCalc({ res: Number(removeSpaces(calc.res)), sign: "", num: 0 });
-  }, [calc]);
+  }, [calc, isInitialRender]);
 
   return (
     <CalcOperationsContext.Provider

@@ -7,14 +7,14 @@ Frontend Mentor challenges help you improve your coding skills by building reali
 ## Table of contents
 
 - [Overview](#overview)
-    - [The challenge](#the-challenge)
-    - [Screenshot](#screenshot)
-    - [Links](#links)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
 - [My process](#my-process)
-    - [Built with](#built-with)
-    - [What I learned](#what-i-learned)
-    - [Continued development](#continued-development)
-    - [Useful resources](#useful-resources)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -79,13 +79,13 @@ To see how you can add code snippets, see below:
 
 ```css
 .proud-of-this-css {
-    color: papayawhip;
+  color: papayawhip;
 }
 ```
 
 ```js
 const proudOfThisFunc = () => {
-    console.log("🎉");
+  console.log("🎉");
 };
 ```
 
@@ -119,6 +119,8 @@ out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
   details how to check if value is of type number in TypeScript.
 - [Storing multiple elements in a single ref](https://www.seancdavis.com/posts/storing-multiple-elements-in-a-single-ref-in-react/) -
   This article demonstrates how to store multiple HTML elements into a single useRef.
+- [Fix Maximum Update Depth Exceeded](https://typeofnan.dev/fix-the-maximum-update-depth-exceeded-error-in-react/) -
+  This posts explains different ways to resolve an infinite loop on in React.js.
 
 ## Author
 
