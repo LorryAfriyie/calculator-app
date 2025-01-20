@@ -159,13 +159,16 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
     }
   };
 
+  // Remove commas for calculation purposes
   const removeSpaces = (value?: string | number) =>
     value!.toString().replace(/,/g, "");
 
+  // Add commas in the thousand mark
   const toLocaleString = (value?: string | number) =>
     String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   useEffect(() => {
+    // IF-state code block to prevent re-render loop
     if (isInitialRender) {
       // Set the values to zero when the states are empty
       if (calc.num === "" && calc.res === "") {

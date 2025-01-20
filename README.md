@@ -16,7 +16,6 @@ Frontend Mentor challenges help you improve your coding skills by building reali
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -34,25 +33,28 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+The screenshots below showcase the appearance of the website in both desktop and mobile view:
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the
-page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long
-the page is. If it's very long, it might be best to crop it.
+### Desktop view screenshots:
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free
-option, so you don't need to purchase it.
+![Screenshot 1](./public/screenshots/calculator-app-theme-1-desktop.png)
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image
-above.
+![Screenshot 2](./public/screenshots/calculator-app-theme-2-desktop.png)
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot,
-feel free to remove this entire section.**
+![Screenshot 3](./public/screenshots/calculator-app-theme-3-desktop.png)
+
+### Mobile view screenshots:
+
+![Screenshot 1](./public/screenshots/calculator-app-theme-1-mobile.png)
+
+![Screenshot 2](./public/screenshots/calculator-app-theme-2-mobile.png)
+
+![Screenshot 3](./public/screenshots/calculator-app-theme-3-mobile.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Project solution URL](https://github.com/LorryAfriyie/calculator-app)
+- Live Site URL: [Live site URL](https://your-live-site-url.com)
 
 ## My process
 
@@ -63,43 +65,29 @@ feel free to remove this entire section.**
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
+- TypeScript
 - [React](https://reactjs.org/) - JS library
 - [Vite.js](https://vitejs.dev/) - Frontend Tooling
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and
-providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+Use regex to be able to add a comma by the thousand mark in a numeric value:
 
 ```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+const toLocaleString = (value?: string | number) =>
+  String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 ```
 
-If you want more help with writing markdown, we'd recommend checking
-out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+Use regex to be able to remove a comma from a numeric value:
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+```js
+  const removeSpaces = (value?: string | number) =>
+    value!.toString().replace(/,/g, "");
+```
 
 ### Continued development
 
 - Continue learning and utilizing TypeScript on React.js with Vite.js
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.
-**
 
 ### Useful resources
 
