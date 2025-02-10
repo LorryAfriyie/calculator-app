@@ -54,7 +54,7 @@ The screenshots below showcase the appearance of the website in both desktop and
 ### Links
 
 - Solution URL: [Project solution URL](https://github.com/LorryAfriyie/calculator-app)
-- Live Site URL: [Live site URL](https://your-live-site-url.com)
+- Live Site URL: [Live site URL](https://lorryafriyie.github.io/calculator-app)
 
 ## My process
 

@@ -14,6 +14,7 @@ type CalcOperationContext = {
     num: number | string;
     res?: number | string;
   };
+  
   setCalc: Dispatch<SetStateAction<CalcType>>;
   buttonValue: (value: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   resetCalculator: () => void;
