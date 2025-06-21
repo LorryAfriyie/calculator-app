@@ -84,8 +84,8 @@ export function CalcOperationsProvider({ children }: CalcOperations) {
   function deleteValue() {
     setCalc({
       ...calc,
-      num: calc.num.toString().slice(0, -1),
-      res: calc.res!.toString().slice(0, -1),
+      num: calc.num != 0 ? calc.num.toString().slice(0, -1) : 0,
+      res: calc.res != 0 ? calc.res!.toString().slice(0, -1) : 0,
     });
   }
 
